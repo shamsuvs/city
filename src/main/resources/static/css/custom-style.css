@@ -1,0 +1,43 @@
+.box {
+    background-color: #ccc;
+    color: #000;
+    border-radius: 5px;
+    padding: 8px;
+    display: flex;            /* new */
+    align-items: center;      /* new */
+    justify-content: center;
+}
+
+.box-current{
+    background-color: #444;
+
+    color: #fff;
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 3px;
+    grid-template-columns: repeat(6, 45px);
+    grid-template-rows: 45px 45px 45px 45px;
+    grid-auto-flow: column;
+    padding-bottom: 15px
+}
+/*Google ads*/
+.ad-wrapper,
+.ad-wrapper .ad-inner,
+.ad-wrapper .ad-inner .ad .dfp-ad {
+    border-bottom:none;
+    padding:0!important
+
+}
+.ad-wrapper {
+    padding:20px 0!important;
+    background: #f7f7fc;
+    text-align:center
+}
+.side-ad-wrapper {
+    padding:20px 1px 5px 1px !important;
+    border-bottom:none;
+    background: #f7f7fc;
+    text-align:center
+}

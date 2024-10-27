@@ -1,0 +1,29 @@
+# Sample properties used by Spring configuration in ApplicationConfig.
+
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:mysql://us-cdbr2-azure-southcentral-f.cleardb.net:3306/sp1?useSSL=false
+    username: bb6a38c9c42500
+    password: a9949051
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      show-sql: false
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+application:
+  domain: sultanbathery.com
+logging:
+  level:
+    root: info
+
+

@@ -1,0 +1,12 @@
+# Sample properties used by Spring configuration in ApplicationConfig.
+
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  profiles:
+    active: prod
+server:
+  port: 8182

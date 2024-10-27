@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://www.smashvoid.com/</loc>
+        <lastmod>2022-04-25T07:56:33+00:00</lastmod>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://www.smashvoid.com/questions/java</loc>
+        <lastmod>2022-04-16T17:07:35+00:00</lastmod>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://www.smashvoid.com/questions/macOS</loc>
+        <lastmod>2022-05-16T17:07:35+00:00</lastmod>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://www.smashvoid.com/how-can-i-convert-a-string-to-an-int-in-java-sv5585785</loc>
+        <lastmod>2022-05-29T00:00:00Z</lastmod>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://www.smashvoid.com/how-to-convert-arraylist-to-string-array-in-java-sv5374315</loc>
+        <lastmod>2022-05-27T00:00:00Z</lastmod>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://www.smashvoid.com/how-to-check-if-string-is-not-null-and-not-empty-in-java-sv3598777</loc>
+        <lastmod>2022-05-26T00:00:00Z</lastmod>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://www.smashvoid.com/what-is-serialversionuid-sv285793</loc>
+        <lastmod>2022-05-26T00:00:00Z</lastmod>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://www.smashvoid.com/how-to-kill-the-process-is-using-port-8080-in-macos-sv997412</loc>
+        <lastmod>2022-05-26T00:00:00Z</lastmod>
+        <priority>1.00</priority>
+    </url>
+
+</urlset>
+
+
