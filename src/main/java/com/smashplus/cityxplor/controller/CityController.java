@@ -29,7 +29,7 @@ public class CityController {
         this.establishments = findEstablishments;
     }
 
-    @GetMapping({ "/"})
+    @GetMapping({ "/old"})
     public String getCityProfile(Model model){
         String city = "sultan-bathery";
         model.addAttribute("city", city);

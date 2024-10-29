@@ -91,6 +91,20 @@ public class EstablishmentService {
         }
         return null;
     }
+    public List<EstablishmentDTO> findListOfEstablishments(String cityId,String category, String sortOrder) {
+        try {
+            List<EstablishmentDTO> establishmentEntities =null;
+            if(ValConditions.isNotEmpty(category) && !category.equalsIgnoreCase("all")) {
+                establishmentEntities = cityRestService.findEstablishments(cityId, category, sortOrder);
+            }else{
+                establishmentEntities = cityRestService.findEstablishments( cityId, "all");
+            }
+            return establishmentEntities;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public EstablishmentDTO findEstablishmentProfile(String id) {
         try {

@@ -17,7 +17,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 @Controller
 public class EstablishmentController {
@@ -32,7 +36,29 @@ public class EstablishmentController {
         this.establishmentService = establishmentService;
         this.newsService = newsService;
     }
+    @GetMapping({ "/"})
+    public String getCityProfile(Model model){
+        String city = "sultan-bathery";
+        model.addAttribute("city", city);
+        CityTableEntity cityTableEntity = listService.findCity(city);
+        model.addAttribute("cityObject", cityTableEntity);
+        model.addAttribute("editorsPicks", establishmentService.findListOfEstablishments("sultan-bathery",null,"likes"));
+       // model.addAttribute("editorsPicks", );
 
+        //List<EstablishmentEntity> editorsPicks  = establishments.findEstablishmentsByFilter(cityTableEntity.getId(),null,"likes");
+        //model.addAttribute("editorsPicks", editorsPicks);
+        List<EstablishmentDTO> establishmentEntities  =establishmentService.findListOfEstablishments("sultan-bathery",null,"name");
+        model.addAttribute("establishmentsAll", establishmentEntities);
+
+       // Map<String, List<EstablishmentEntity>> estabGroup =
+         //       establishmentEntities.stream().collect(Collectors.groupingBy(w -> w.()!=null?w.getCategory():"other"));
+        //model.addAttribute("estabGroup", estabGroup);
+        //SortedSet<String> keys = new TreeSet<>(estabGroup.keySet());
+       // model.addAttribute("keys",keys);
+        model.addAttribute("categoryDto",commonUtil.getCategoryDTOMap());
+        return "city/indexv2";
+
+    }
     /*@GetMapping({ "/{estName}-hospital-{id}--{cityCode}",
             "/hotel-{estName}-{id}--{cityCode}",
             "/{estName}-college-{id}--{cityCode}",

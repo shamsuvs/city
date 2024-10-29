@@ -51,6 +51,20 @@ public class CityRestService    {
         }
         return null;
     }
+    public List<EstablishmentDTO> findEstablishments(String cityId, String category, String sortOrder) {
+        try {
+            String criterion = null;
+            String ordsRestUrl="establishment_tbl/";
+            if(!"all".equals(category)){
+                criterion =  "{\"category\":\""+category+"\",\"$orderby\":{\""+sortOrder+"\":\"asc\"}}";
+            }
+            List<EstablishmentDTO> response=getListResponse(ordsRestUrl,null,criterion).getItems();
+            return response;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
     private EstablishmentResponse getListResponse(String restUrl, String param, String c){
         RestTemplate restTemplate = new RestTemplate();
         String url = RestUrlConstants.ORDS_PREFIX+restUrl ;
