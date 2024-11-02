@@ -5,10 +5,13 @@ import com.smashplus.cityxplor.dto.EstablishmentDTO;
 import com.smashplus.cityxplor.dto.EstablishmentResponse;
 import com.smashplus.cityxplor.dto.ListResponse;
 import com.smashplus.cityxplor.util.ValConditions;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -51,6 +54,21 @@ public class CityRestService    {
         }
         return null;
     }
+    public List<EstablishmentDTO> findEstablishmentsFileter(String cityId, String type, String value, String sortOrder) {
+        try {
+            String criterion = null;
+            String ordsRestUrl="establishment_tbl/";
+
+            if(!"all".equals(type)){
+                criterion =  "{\""+type+"\":"+value+"\"},\"$orderby\":{\""+sortOrder+"\":\"asc\"}}";
+            }
+            List<EstablishmentDTO> response=getListResponse(ordsRestUrl,null,criterion).getItems();
+            return response;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
     public List<EstablishmentDTO> findEstablishments(String cityId, String category, String sortOrder) {
         try {
             String criterion = null;
@@ -73,11 +91,19 @@ public class CityRestService    {
         }
         if(ValConditions.isNotEmpty(c)){
             url=url+"?q={criterion}";
+           // url=url.replace("{criterion}",c);
         }
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json");
+        /*riComponents builder = UriComponentsBuilder.fromHttpUrl(url)
+                .queryParam("q",c)
+                .build();*/
         EstablishmentResponse responseDTO = null;
         try {
+            /*ttpEntity<String> requestEntity = new HttpEntity<>(null, headers);
+
+            ResponseEntity<EstablishmentResponse> response = restTemplate.exchange(builder.toUriString(),HttpMethod.GET, requestEntity,
+                    EstablishmentResponse.class);*/
             responseDTO = restTemplate.getForObject(url, EstablishmentResponse.class,c);
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,7 +123,17 @@ public class CityRestService    {
         }
         return null;
     }
+    public EstablishmentDTO findEstablishmentProfileOnUrl(String url) {
+        try {
+            String ordsRestUrl="city/establishment-by-url/"+url;
 
+            EstablishmentDTO response=getResponse(ordsRestUrl,null);
+            return response;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
     public EstablishmentDTO getResponse(String restUrl, String param){
         RestTemplate restTemplate = new RestTemplate();
         String url = RestUrlConstants.ORDS_PREFIX+restUrl ;

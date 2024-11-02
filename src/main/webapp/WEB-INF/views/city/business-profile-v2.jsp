@@ -172,7 +172,7 @@
         <c:if test="${entity.category eq 'hospital'}">
           <h1 class="pb-3 pb-lg-4">Doctors of ${entity.title}</h1>
           <!-- Post-->
-          <c:forEach var="doctor" items="${entity.specialityTblsById}">
+          <c:forEach var="doctor" items="${entity.doctors}">
             <!-- Horizontal card: Image on the left card border-0 bg-secondary rounded-4 position-relative mb-3-->
             <div class="card overflow-hidden border-0 bg-secondary rounded-4 position-relative mb-3">
               <div class="row g-0">
@@ -180,9 +180,9 @@
                   <c:set var="turl" value="#" />
                   <div class="card-body">
                     <h4 class="card-title"> ${doctor.name} </h4>
-                    <div class="d-flex align-items-center me-3 fs-lg text-uppercase"><i class="ai-clipboard me-1"></i>${doctor.degree}</div>
+                    <div class="d-flex align-items-center me-3 fs-lg text-uppercase"><i class="ai-clipboard me-1"></i>${doctor.qualification}</div>
 
-                    <h2 class="fs-base fw-normal text-muted mb-2 mb-sm-3 text-capitalize">Speciality : <a href="/${doctor.speciality}-doctors-sultan-bathery--sb"> ${doctor.speciality}</a></h2>
+                    <h2 class="fs-base fw-normal text-muted mb-2 mb-sm-3 text-capitalize">Speciality : <a href="/list/${doctor.specialityShortCode}-doctors-list-sultan-bathery--sb"> ${doctor.specialityShortCode}</a></h2>
 
                   </div>
                 </div>
@@ -279,7 +279,7 @@
           <!-- Post-->
           <article class="swiper-slide">
             <div class="position-relative"><img class="rounded-5" src="${ent.image1}" alt="Post image">
-              <h3 class="h4 mt-4 mb-0"><a class="stretched-link" href="${ent.uniqueSEOId}-${ent.id}--sb">${ent.title}</a></h3>
+              <h3 class="h4 mt-4 mb-0"><a class="stretched-link" href="${ent.uniqueSEOId}--sb">${ent.title}</a></h3>
             </div>
           </article>
         </c:forEach>

@@ -19,12 +19,15 @@
                         <div class="d-lg-flex">
 
                             <div class="mega-dropdown-column pb-2 pt-lg-3 pb-lg-4">
-                                <ul class="list-unstyled mb-0">
-                                    <li><a class="dropdown-item" href="${categoryDto.get('hotel').url}">Hotels</a><span class="mega-dropdown-column position-absolute top-0 end-0 h-100 bg-size-cover bg-repeat-0 zindex-2 opacity-0" style="background-image: url(https://res.cloudinary.com/dw8him6rb/image/upload/v1663933000/cld-sample-4.jpg);"></span></li>
-                                    <li><a class="dropdown-item" href="${categoryDto.get('hospital').url}">Hospitals</a><span class="mega-dropdown-column position-absolute top-0 end-0 h-100 bg-size-cover bg-repeat-0 zindex-2 opacity-0" style="background-image: url(https://res.cloudinary.com/dw8him6rb/image/upload/v1665039690/city-explorer/hospital.jpg);"></span></li>
-                                    <li><a class="dropdown-item" href="${categoryDto.get('college').url}">Colleges</a><span class="mega-dropdown-column position-absolute top-0 end-0 h-100 bg-size-cover bg-repeat-0 zindex-2 opacity-0" style="background-image: url(https://res.cloudinary.com/dw8him6rb/image/upload/v1665039458/city-explorer/school.jpg);"></span></li>
-                                    <li><a class="dropdown-item" href="${categoryDto.get('school').url}">Schools</a><span class="mega-dropdown-column position-absolute top-0 end-0 h-100 bg-size-cover bg-repeat-0 zindex-2 opacity-0" style="background-image: url(https://res.cloudinary.com/dw8him6rb/image/upload/v1665040024/city-explorer/college_fn.jpg);"></span></li>
-                                </ul>
+
+                                    <ul class="nav flex-column mb-0">
+                                        <c:forEach var="category" items="${categoryDto}">
+                                            <c:set value="${category.value}" var="dto"/>
+                                            <li><a class="dropdown-item" href="${dto.url}-in--sulthan-bathery">${dto.categoryTitle}</a><span class="mega-dropdown-column position-absolute top-0 end-0 h-100 bg-size-cover bg-repeat-0 zindex-2 opacity-0" style="background-image: url(https://res.cloudinary.com/dw8him6rb/image/upload/v1663933000/cld-sample-4.jpg);"></span></li>
+                                        </c:forEach>
+
+                                    </ul>
+
                             </div>
                             <div class="mega-dropdown-column position-relative border-start zindex-3"></div>
                         </div>

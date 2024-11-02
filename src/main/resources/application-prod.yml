@@ -6,9 +6,9 @@ spring:
     activate:
       on-profile: prod
   datasource:
-    url: jdbc:mysql://us-cdbr2-azure-southcentral-f.cleardb.net:3306/sp1?useSSL=false
-    username: bb6a38c9c42500
-    password: a9949051
+    url: jdbc:mysql://bnybtsjyvua3n9wzef56-mysql.services.clever-cloud.com:20399/bnybtsjyvua3n9wzef56
+    username: unu4ppqefgjupna6
+    password: XWdgTErfq5eQuOqT0yc
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:

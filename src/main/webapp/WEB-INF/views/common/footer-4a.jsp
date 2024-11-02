@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Footer-->
 <footer class="footer pt-lg-5 pt-4 pb-5">
   <div class="container">
@@ -25,19 +26,27 @@
             </ul>
           </div>
           <div class="col">
-            <ul class="nav flex-column mb-0">
-              <li class="nav-item mb-2"><a class="nav-link p-0" href="${categoryDto.get('hotel').url}">Hotels</a></li>
+              <ul class="nav flex-column mb-0">
+                  <li class="nav-item mb-2"><a class="nav-link p-0" href="https://www.smashplus.com/">Smashplus Home</a></li>
+              </ul>
+            <%--<ul class="nav flex-column mb-0">
+              <li class="nav-item mb-2"><a class="nav-link p-0" href="${categoryDto.get('hotel').url}">Hotels in Sulthan bathery</a></li>
               <li class="nav-item mb-2"><a class="nav-link p-0" href="${categoryDto.get('hospital').url}">Hospitals</a></li>
               <li class="nav-item mb-2"><a class="nav-link p-0" href="${categoryDto.get('textile').url}">Textiles</a></li>
               <li class="nav-item mb-2"><a class="nav-link p-0" href="${categoryDto.get('school').url}">Schools</a></li>
-          <%--    <li class="nav-item mb-2"><a class="nav-link p-0" href="${categoryDto.get('super-market').url}">Super Markets</a></li>--%>
- <%--             <li class="nav-item mb-2"><a class="nav-link p-0" href="/software-companies">Software Companies </a></li>--%>
-            </ul>
+          &lt;%&ndash;    <li class="nav-item mb-2"><a class="nav-link p-0" href="${categoryDto.get('super-market').url}">Super Markets</a></li>&ndash;%&gt;
+ &lt;%&ndash;             <li class="nav-item mb-2"><a class="nav-link p-0" href="/software-companies">Software Companies </a></li>&ndash;%&gt;
+            </ul>--%>
           </div>
           <div class="col">
-            <ul class="nav flex-column mb-0">
-              <li class="nav-item mb-2"><a class="nav-link p-0" href="https://www.smashplus.com/">Smashplus Home</a></li>
-            </ul>
+
+              <ul class="nav flex-column mb-0">
+                  <c:forEach var="category" items="${categoryDto}">
+                      <c:set value="${category.value}" var="dto"/>
+                      <li class="nav-item mb-2"><a class="nav-link p-0" href="${dto.url}-in--sulthan-bathery">Best ${dto.categoryTitle} In Sulthan Bathery</a></li>
+                  </c:forEach>
+
+              </ul>
           </div>
           <div class="col">
             <ul class="nav flex-column mb-0">

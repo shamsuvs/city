@@ -2,6 +2,7 @@ package com.smashplus.cityxplor.service;
 
 import com.smashplus.cityxplor.domain.EstablishmentEntity;
 import com.smashplus.cityxplor.domain.SpecialityTblEntity;
+import com.smashplus.cityxplor.dto.EstablishmentCategoryDTO;
 import com.smashplus.cityxplor.dto.EstablishmentDTO;
 import com.smashplus.cityxplor.util.ValConditions;
 import com.smashplus.cityxplor.repository.EstablishmentEntityRepository;
@@ -18,6 +19,8 @@ public class EstablishmentService {
 
     @Autowired
     CityRestService cityRestService;
+    @Autowired
+    EstablishmentCategoryService establishmentCategoryService;
 
     public EstablishmentService(EstablishmentEntityRepository entityRepository, SpecialityTblEntityRepository specialityTblEntityRepository) {
         this.entityRepository = entityRepository;
@@ -80,7 +83,7 @@ public class EstablishmentService {
     public List<EstablishmentDTO> findListOfEstablishments(String cityId,String category) {
         try {
             List<EstablishmentDTO> establishmentEntities =null;
-            if(!category.equalsIgnoreCase("all")) {
+            if(!category.contains("all")) {
                 establishmentEntities = cityRestService.findEstablishments(cityId, category);
             }else{
                 establishmentEntities = cityRestService.findEstablishments( cityId, "all");
@@ -105,10 +108,33 @@ public class EstablishmentService {
         }
         return null;
     }
+    public List<EstablishmentDTO> findListOfEstablishmentsFilter(String cityId,String type,String value, String sortOrder) {
+        try {
+            List<EstablishmentDTO> establishmentEntities =null;
+            if(ValConditions.isNotEmpty(type) && !type.equalsIgnoreCase("all")) {
+                establishmentEntities = cityRestService.findEstablishmentsFileter(cityId, type, value, sortOrder);
+            }else{
+                establishmentEntities = cityRestService.findEstablishments( cityId, "all");
+            }
+            return establishmentEntities;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public EstablishmentDTO findEstablishmentProfile(String id) {
         try {
             return cityRestService.findEstablishmentProfile(id);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public EstablishmentDTO findEstablishmentProfileOnUrl(String url) {
+        try {
+            return cityRestService.findEstablishmentProfileOnUrl(url);
 
         }catch (Exception e){
             e.printStackTrace();
@@ -150,5 +176,9 @@ public class EstablishmentService {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<EstablishmentCategoryDTO> fetchEstablishmentCategories() {
+        return establishmentCategoryService.findEstablishmentCategory();
     }
 }

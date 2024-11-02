@@ -7,6 +7,4 @@ spring:
       prefix: /WEB-INF/views/
       suffix: .jsp
   profiles:
-    active: prod
-server:
-  port: 8182
+    active: dev

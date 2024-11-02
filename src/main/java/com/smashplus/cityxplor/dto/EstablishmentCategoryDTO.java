@@ -1,10 +1,21 @@
 package com.smashplus.cityxplor.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class EstablishmentCategoryDTO {
+    @JsonProperty("est_category_display")
     private String categoryTitle;
+    @JsonProperty("image")
     private String image;
+    @JsonProperty("category_dtl")
     private String teaser;
+    @JsonProperty("url")
     private String url;
+    @JsonProperty("id")
+    private int id;
+    @JsonProperty("is_seo_display")
+    private int seoDisplay;
+    @JsonProperty("est_category")
     private String key; //Unique key for each category act as Id
 
     public EstablishmentCategoryDTO(String categoryTitle, String image, String teaser, String url, String key) {
@@ -57,5 +68,21 @@ public class EstablishmentCategoryDTO {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getSeoDisplay() {
+        return seoDisplay;
+    }
+
+    public void setSeoDisplay(int seoDisplay) {
+        this.seoDisplay = seoDisplay;
     }
 }

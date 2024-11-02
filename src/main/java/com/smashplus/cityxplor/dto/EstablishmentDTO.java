@@ -1,6 +1,11 @@
 package com.smashplus.cityxplor.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.smashplus.cityxplor.domain.SpecialityTblEntity;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 
 public class EstablishmentDTO {
@@ -78,6 +83,7 @@ public class EstablishmentDTO {
 
     @JsonProperty("un_seo_id")
     private String uniqueSEOId;
+    private List<DoctorDTO> doctors=new ArrayList<>();
 
     public int getId() {
         return id;
@@ -206,6 +212,14 @@ public class EstablishmentDTO {
 
     public String getWebsite() {
         return website;
+    }
+
+    public List<DoctorDTO> getDoctors() {
+        return doctors;
+    }
+
+    public void setDoctors(List<DoctorDTO> doctors) {
+        this.doctors = doctors;
     }
 
     public void setWebsite(String website) {

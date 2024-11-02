@@ -212,13 +212,13 @@
     ">
             <div class="swiper-wrapper">
                 <c:forEach items="${editorsPicks}" var="establishment">
-                    <c:set value="/${establishment.uniqueSEOId}-${establishment.id}--sb" var="destUrl"/>
+                    <c:set value="/${establishment.uniqueSEOId}--sb" var="destUrl"/>
                     <!-- Item-->
                     <article class="swiper-slide h-auto">
                         <div class="card border-0 bg-secondary">
                             <div class="card-body pb-4">
                                 <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">
-                                    <a class="badge text-nav fs-xs border" href="${categoryDto.get(establishment.category).uniqueSEOId}">${categoryDto.get(establishment.category).categoryTitle}</a></span>
+                                    <a class="badge text-nav fs-xs border" href="${categoryDto.get(establishment.category).url}">${categoryDto.get(establishment.category).categoryTitle}</a></span>
                                         <%--<span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Fashion</a>--%>
                                 </div>
                                 <h3 class="h4 card-title"><a href="${destUrl}">${establishment.title}</a></h3>
@@ -267,8 +267,8 @@
                                     <div class="row row-cols-2 g-4 pb-2 pb-xl-0 mb-4 mb-xl-5">
                                         <c:forEach items="${estabGroup.get(type)}" var="org" varStatus="indEnt" begin="0" end="3">
                                             <div class="col"><i class="ai-map-pin d-block h2 text-primary fw-normal pb-2 mb-1"></i>
-                                                <c:set value="/${org.uniqueSEOId}-${org.id}--sb" var="destUrl"/>
-                                                <h3 class="h6 mb-2"><a href="${destUrl}"> ${org.title}</a></h3>
+                                                <c:set value="/${org.url}--sb" var="destUrl"/>
+                                                <h3 class="h6 mb-2"><a href="${destUrl}"> ${org.estName}</a></h3>
                                                 <p class="fs-sm mb-0">${org.teaser}</p>
                                             </div>
                                         </c:forEach>
@@ -311,7 +311,7 @@
                         <!-- Item-->
                         <article class="swiper-slide w-sm-auto h-auto">
                             <div class="card h-100 border-0 mx-auto" style="max-width: 416px;">
-                                <a href="/${establishment.uniqueSEOId}-${establishment.id}--sb">
+                                <a href="/${establishment.uniqueSEOId}--sb">
                                     <img class="card-img-top" src="${establishment.image1}" alt="${establishment.title}">
                                 </a>
                                     <div class="card-body pb-4">
@@ -320,7 +320,7 @@
                                             <%--<span class="fs-sm text-muted">${establishment.category}</span>
                                             <span class="fs-xs opacity-20 mx-3">|</span>--%><a class="badge text-nav fs-xs border" href="${categoryDto.get(type).url}">${categoryDto.get(type).categoryTitle}</a></div>
                                         <h3 class="h4 card-title">
-                                            <a href="/${establishment.uniqueSEOId}-${establishment.id}--sb">${establishment.title}</a>
+                                            <a href="/${establishment.uniqueSEOId}--sb">${establishment.title}</a>
                                         </h3>
                                         <p class="card-text">${establishment.teaser}</p>
                                     </div>
@@ -335,116 +335,7 @@
         <!-- All articles button-->
         <div class="container text-center pt-4 pb-1 pb-sm-3 pb-md-4 py-lg-5 mb-xl-1 mb-xxl-4 mt-2 mt-lg-0"><a class="btn btn-primary mb-1" href="/all-establishments--sb">View All</a></div>
     </section>
-    <!-- Latest posts todo-->
-   <%-- <section class="container py-5 my-md-2 my-lg-3 my-xl-4 my-xxl-5">
-        <h2 class="h1 pb-3 py-md-4">Latest posts</h2>
-        <div class="row pb-md-4 pb-lg-5">
-            <!-- Featured article-->
-            <div class="col-lg-6 pb-2 pb-lg-0 mb-4 mb-lg-0">
-                <article class="card h-100 border-0 position-relative overflow-hidden bg-size-cover bg-position-center me-lg-4" style="background-image: url(/img/blog/04.jpg);">
-                    <div class="bg-dark position-absolute top-0 start-0 w-100 h-100 opacity-60"></div>
-                    <div class="card-body d-flex flex-column position-relative zindex-2 mt-sm-5">
-                        <h3 class="pt-5 mt-4 mt-sm-5 mt-lg-auto"><a class="stretched-link text-light" href="blog-single-v1.html">Travel destinations to inspire and restore resources</a></h3>
-                        <p class="card-text text-light opacity-70">Morbi et massa scelerisque sit commodo dignissim faucibus vel quisque proin lectus laoreet pharetra at condimentum...</p>
-                        <div class="d-flex align-items-center"><span class="fs-sm text-light opacity-50">9 hours ago</span><span class="fs-xs text-light opacity-30 mx-3">|</span><a class="badge text-ligh fs-xs border border-light" href="#">Travel</a></div>
-                    </div>
-                </article>
-            </div>
-            <!-- Other articles-->
-            <div class="col-lg-6">
-                <div class="row row-cols-1 row-cols-sm-2 g-4">
-                    <article class="col py-1 py-xl-2">
-                        <div class="border-bottom pb-4 ms-xl-3">
-                            <h3 class="h4"><a href="blog-single-v2.html">The 15 best books every person should read</a></h3>
-                            <p>Egestas neque sceleri semper sit at eu cursus faucibus velit cras aliquam sed dictum at at orci...</p>
-                            <div class="d-flex align-items-center"><span class="fs-sm text-muted">12 hours ago</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Books</a></div>
-                        </div>
-                    </article>
-                    <article class="col py-1 py-xl-2">
-                        <div class="border-bottom pb-4 ms-xl-3">
-                            <h3 class="h4"><a href="blog-single-v3.html">Destinations to inspire and restore resources</a></h3>
-                            <p>Purus lectus odio lacus nibh habitant ac sapien malesuada sed convallis adipiscing eget convallis...</p>
-                            <div class="d-flex align-items-center"><span class="fs-sm text-muted">3 days ago</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Travel</a></div>
-                        </div>
-                    </article>
-                    <article class="col py-1 py-xl-2">
-                        <div class="border-bottom pb-4 ms-xl-3">
-                            <h3 class="h4"><a href="blog-single-v1.html">The fashion for eco bags with vintage prints</a></h3>
-                            <p>Morbi et massa fames ac scelerisque sit commodo dignissim faucibus vel quisque proin lectus...</p>
-                            <div class="d-flex align-items-center"><span class="fs-sm text-muted">12 hours ago</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Fashion</a></div>
-                        </div>
-                    </article>
-                    <article class="col py-1 py-xl-2">
-                        <div class="border-bottom pb-4 ms-xl-3">
-                            <h3 class="h4"><a href="blog-single-v2.html">How to look for inspiration for new goals</a></h3>
-                            <p>Nec gravida senectus donec vivamus quam urna facilisis viverra eget in suspendisse dignissim...</p>
-                            <div class="d-flex align-items-center"><span class="fs-sm text-muted">3 days ago</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Psychology</a></div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>--%>
-   <%-- <!-- Editor's picks (Carousel on screens < 992px)-->
-    <section class="container pb-5 mb-2 mb-lg-3 mb-xl-4 mb-xxl-5">
-        <h2 class="h1 pb-3 pb-lg-4">Editor's picks</h2>
-        <div class="swiper" data-swiper-options="
-      {
-        &quot;spaceBetween&quot;: 24,
-        &quot;pagination&quot;: {
-          &quot;el&quot;: &quot;.swiper-pagination&quot;,
-          &quot;clickable&quot;: true
-        },
-        &quot;breakpoints&quot;: {
-          &quot;576&quot;: { &quot;slidesPerView&quot;: 2 },
-          &quot;992&quot;: { &quot;slidesPerView&quot;: 3 }
-        }
-      }
-    ">
-            <div class="swiper-wrapper">
-                <!-- Item-->
-                <article class="swiper-slide h-auto">
-                    <div class="card border-0 bg-secondary">
-                        <div class="card-body pb-4">
-                            <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">12 hours ago</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Fashion</a></div>
-                            <h3 class="h4 card-title"><a href="blog-single-v1.html">The fashion for eco bags with vintage prints</a></h3>
-                            <p class="card-text">Morbi et massa fames ac scelerisque sit commodo dignissim faucibus vel quisque...</p>
-                        </div>
-                        <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="/img/blog/authors/02.png" width="48" alt="Post author">
-                            <h6 class="ps-3 mb-0">Lillia Black</h6></a></div>
-                    </div>
-                </article>
-                <!-- Item-->
-                <article class="swiper-slide h-auto">
-                    <div class="card border-0 bg-secondary">
-                        <div class="card-body pb-4">
-                            <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">12 hours ago</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Inspiration</a></div>
-                            <h3 class="h4 card-title"><a href="blog-single-v2.html">How to look for inspiration for new goals</a></h3>
-                            <p class="card-text">Morbi et massa fames ac scelerisque sit commodo dignissim faucibus vel quisque...</p>
-                        </div>
-                        <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="/img/blog/authors/02.png" width="48" alt="Post author">
-                            <h6 class="ps-3 mb-0">Darlene Robertson</h6></a></div>
-                    </div>
-                </article>
-                <!-- Item-->
-                <article class="swiper-slide h-auto">
-                    <div class="card border-0 bg-secondary">
-                        <div class="card-body pb-4">
-                            <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">July 16, 2022</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Travel</a></div>
-                            <h3 class="h4 card-title"><a href="blog-single-v3.html">Destinations to inspire and restore resources</a></h3>
-                            <p class="card-text">Nec gravida senectus donec vivamus quam urna facilisis viverra eget in suspendisse...</p>
-                        </div>
-                        <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="/img/blog/authors/02.png" width="48" alt="Post author">
-                            <h6 class="ps-3 mb-0">Guy Hawkins</h6></a></div>
-                    </div>
-                </article>
-            </div>
-            <!-- Pagination (bullets)-->
-            <div class="swiper-pagination position-relative bottom-0 mt-2 pt-4 d-lg-none"></div>
-        </div>
-        <!-- Read more button-->
-        <div class="text-center pt-4 mt-2 mt-lg-0 pt-lg-5 pb-sm-2 pb-md-4"><a class="btn btn-primary" href="blog-grid-sidebar.html">Read all articles</a></div>
-    </section>--%>
+
 </main>
 
 <!-- Footer-->

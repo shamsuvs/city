@@ -75,10 +75,10 @@
         <p>${teaser}</p>
         <c:forEach items="${establishments}" var="establishment">
           <!-- Post-->
-          <article class="row g-0 border-0 mb-4"><a class="col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="/${establishment.uniqueSEOId}-${establishment.id}--sb" style="background-image: url(${establishment.image1}); min-height: 14rem"></a>
+          <article class="row g-0 border-0 mb-4"><a class="col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="/${establishment.uniqueSEOId}--sb" style="background-image: url(${establishment.image1}); min-height: 14rem"></a>
             <div class="col-sm-7">
               <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
-                <h3><a href="/${establishment.uniqueSEOId}-${establishment.id}--sb">${establishment.title}</a></h3>
+                <h3><a href="/${establishment.uniqueSEOId}--sb">${establishment.title}</a></h3>
                 <p class="d-sm-none d-md-block">${establishment.teaser}</p>
                 <div class="d-flex flex-wrap align-items-center mt-n2">
                   <a class="nav-link text-muted fs-sm fw-normal p-0 mt-2 me-3" href="#">${establishment.likes}<i class="ai-like fs-lg ms-1"></i></a>

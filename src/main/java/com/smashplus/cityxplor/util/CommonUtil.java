@@ -1,6 +1,9 @@
 package com.smashplus.cityxplor.util;
 
 import com.smashplus.cityxplor.dto.EstablishmentCategoryDTO;
+import com.smashplus.cityxplor.service.EstablishmentCategoryService;
+import com.smashplus.cityxplor.service.EstablishmentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -10,6 +13,8 @@ import java.util.Map;
 
 @Component
 public class CommonUtil {
+    @Autowired
+    EstablishmentService establishmentService;
     public List<EstablishmentCategoryDTO> getCategoryDTO(){
         List<EstablishmentCategoryDTO> list = new ArrayList<>();
         EstablishmentCategoryDTO establishmentCategoryDTO=new EstablishmentCategoryDTO("Hospitals","https://res.cloudinary.com/dw8him6rb/image/upload/v1665039690/city-explorer/hospital.jpg","Best Hospitals","/hospitals--sb","hospital");
@@ -21,6 +26,17 @@ public class CommonUtil {
 
 
         return list;
+    }
+    public Map<String, EstablishmentCategoryDTO> getCategoryDTOMapFromRestService(){
+        Map<String,EstablishmentCategoryDTO> establishmentCategoryDTOMap = new HashMap<>();
+        List<EstablishmentCategoryDTO>  establishmentCategoryDTOS = establishmentService.fetchEstablishmentCategories();
+        establishmentCategoryDTOS.stream().forEach(establishmentCategoryDTO -> establishmentCategoryDTOMap.put(establishmentCategoryDTO.getKey(),establishmentCategoryDTO));
+        return establishmentCategoryDTOMap;
+    }
+    public List<EstablishmentCategoryDTO> getCategoryDTOlistFromRestService(){
+
+        List<EstablishmentCategoryDTO>  establishmentCategoryDTOS = establishmentService.fetchEstablishmentCategories();
+        return establishmentCategoryDTOS;
     }
     public Map<String, EstablishmentCategoryDTO> getCategoryDTOMap(){
         Map<String,EstablishmentCategoryDTO> establishmentCategoryDTOMap = new HashMap<>();
