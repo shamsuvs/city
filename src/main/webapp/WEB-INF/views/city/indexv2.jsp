@@ -118,7 +118,7 @@
 
     </style>
     <!-- Page loading scripts-->
-    <script>
+<%--    <script>
         (function () {
             window.onload = function () {
                 const preloader = document.querySelector('.page-loading');
@@ -129,7 +129,7 @@
             };
         })();
 
-    </script>
+    </script>--%>
     <!-- Import Google Font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -144,12 +144,12 @@
 </head>
 <!-- Body-->
 <body>
-<!-- Page loading spinner-->
+<%--<!-- Page loading spinner-->
 <div class="page-loading active">
     <div class="page-loading-inner">
         <div class="page-spinner"></div><span>Loading...</span>
     </div>
-</div>
+</div>--%>
 <!-- Page wrapper-->
 <main class="page-wrapper">
     <!-- Navbar. Remove 'fixed-top' class to make the navigation bar scrollable with the page-->
@@ -272,7 +272,7 @@
                                                 <p class="fs-sm mb-0">${org.teaser}</p>
                                             </div>
                                         </c:forEach>
-                                    </div><a class="btn btn-primary w-100 w-sm-auto" href="${categoryDto.get(type).url}">View All</a>
+                                    </div><a class="btn btn-primary w-100 w-sm-auto" href="${categoryDto.get(type).url}-in--sb">View All</a>
                                 </div>
                             </div>
                         </div>
@@ -318,7 +318,8 @@
                                         <div class="d-flex align-items-center mb-4 mt-n1">
                                             <c:set value="${establishment.category}" var="type"/>
                                             <%--<span class="fs-sm text-muted">${establishment.category}</span>
-                                            <span class="fs-xs opacity-20 mx-3">|</span>--%><a class="badge text-nav fs-xs border" href="${categoryDto.get(type).url}">${categoryDto.get(type).categoryTitle}</a></div>
+                                            <span class="fs-xs opacity-20 mx-3">|</span>--%>
+                                            <a class="badge text-nav fs-xs border" href="${categoryDto.get(type).url}">${categoryDto.get(type).categoryTitle}</a></div>
                                         <h3 class="h4 card-title">
                                             <a href="/${establishment.uniqueSEOId}--sb">${establishment.title}</a>
                                         </h3>

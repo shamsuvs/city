@@ -66,7 +66,9 @@ public class EstablishmentController {
         model.addAttribute("estabGroup", estabGroup);
         SortedSet<String> keys = new TreeSet<>(estabGroup.keySet());
         model.addAttribute("keys",keys);
-        model.addAttribute("categoryDto",commonUtil.getCategoryDTOMap());
+        //model.addAttribute("categoryDto",commonUtil.getCategoryDTOMap());
+        Map<String, EstablishmentCategoryDTO> categoryDTO = commonUtil.getCategoryDTOMapFromRestService();
+        model.addAttribute("categoryDto", categoryDTO);
         return "city/indexv2";
 
     }
@@ -100,7 +102,9 @@ public class EstablishmentController {
             model.addAttribute("cityObject", cityTableEntity);
             model.addAttribute("cityNews", newsService.getNews());
             model.addAttribute("relEntities", establishmentService.findEstablishmentsPublished(cityTableEntity.getId(),establishmentEntity.getCategory()));
-            model.addAttribute("categoryDto",commonUtil.getCategoryDTOMap());
+            Map<String, EstablishmentCategoryDTO> categoryDTO = commonUtil.getCategoryDTOMapFromRestService();
+            model.addAttribute("categoryDto", categoryDTO);
+            //model.addAttribute("categoryDto",commonUtil.getCategoryDTOMap());
         }catch (Exception e){
             throw new SPException("Error in fetching data: "+e.getMessage(),model);
         }
@@ -161,7 +165,7 @@ public class EstablishmentController {
         CityTableEntity cityTableEntity = listService.findCity(city);
         model.addAttribute("cityObject", cityTableEntity);
         String target = findTarget(request);
-        Map<String, EstablishmentCategoryDTO> categoryDTO = commonUtil.getCategoryDTOMap();
+        Map<String, EstablishmentCategoryDTO> categoryDTO = commonUtil.getCategoryDTOMapFromRestService();
         if(ValConditions.isNotEmpty(categoryDTO.get(target))) {
             model.addAttribute("target", categoryDTO.get(target).getCategoryTitle());
             model.addAttribute("teaser", categoryDTO.get(target).getTeaser());
@@ -174,7 +178,7 @@ public class EstablishmentController {
 
     @GetMapping({ "{estCode}-in--{cityCode}","all-establishments--{cityCode}"
     })
-    public String getHospitals(Model model, HttpServletRequest request, @PathVariable("estCode") String estCode, @PathVariable("cityCode") String cityCode) {
+    public String getHospitals(Model model, HttpServletRequest request, @PathVariable(value = "estCode",required = false) String estCode, @PathVariable("cityCode") String cityCode) {
         String city = "";
         if(cityCode.equalsIgnoreCase("sb")){
             city = "sulthan-bathery";
@@ -206,7 +210,9 @@ public class EstablishmentController {
         model.addAttribute("cityObject", cityTableEntity);
         model.addAttribute("target",tag);
         model.addAttribute("establishments", establishmentService.findListOfEstablishmentsFilter("sb","tags",tag,"title"));
-        model.addAttribute("categoryDto",commonUtil.getCategoryDTOMap());
+        Map<String, EstablishmentCategoryDTO> categoryDTO = commonUtil.getCategoryDTOMapFromRestService();
+        model.addAttribute("categoryDto", categoryDTO);
+        //model.addAttribute("categoryDto",commonUtil.getCategoryDTOMap());
         return "city/business-list";
     }
     @GetMapping({ "/list/{speciality}-doctors-sulthan-bathery--{cityCode}"})
@@ -304,7 +310,9 @@ public class EstablishmentController {
             //model.addAttribute("cityNews", newsService.getNews());
 
             model.addAttribute("relEntities", establishmentService.findListOfEstablishments("sultan-bathery",establishmentEntity.getCategory()));
-            model.addAttribute("categoryDto",commonUtil.getCategoryDTOMap());
+            /*model.addAttribute("categoryDto",commonUtil.getCategoryDTOMap());*/
+            Map<String, EstablishmentCategoryDTO> categoryDTO = commonUtil.getCategoryDTOMapFromRestService();
+            model.addAttribute("categoryDto", categoryDTO);
         }catch (Exception e){
             throw new SPException("Error in fetching data: "+e.getMessage(),model);
         }
