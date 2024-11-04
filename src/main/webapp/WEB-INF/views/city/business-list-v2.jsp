@@ -83,7 +83,7 @@
                 <div class="d-flex flex-wrap align-items-center mt-n2">
                   <a class="nav-link text-muted fs-sm fw-normal p-0 mt-2 me-3" href="#">${establishment.likes}<i class="ai-like fs-lg ms-1"></i></a>
                   <span class="fs-xs opacity-20 mt-2 mx-3">|</span><span class="fs-sm text-muted mt-2">${establishment.tags}</span>
-                  <span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="${categoryDto.get(establishment.category).url}">${categoryDto.get(establishment.category).categoryTitle}</a></div>
+                  <span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="${categoryDto.get(establishment.category).url}-in--sulthan-bathery">${categoryDto.get(establishment.category).categoryTitle}</a></div>
               </div>
             </div>
           </article>
@@ -107,9 +107,11 @@
             <h4 class="pt-1 pt-lg-0 mt-lg-n2">Categories:</h4>
             <ul class="nav flex-column mb-lg-5 mb-4">
               <li class="mb-2"><a class="nav-link d-flex p-0 active" href="#">All categories<span class="fs-sm text-muted ms-2">(110)</span></a></li>
-              <li class="mb-2"><a class="nav-link d-flex p-0" href="${categoryDto.get('hotel').url}">Hotels<span class="fs-sm text-muted ms-2">(8)</span></a></li>
-              <li class="mb-2"><a class="nav-link d-flex p-0" href="${categoryDto.get('hospital').url}">Hospitals<span class="fs-sm text-muted ms-2">(5)</span></a></li>
-              <li class="mb-2"><a class="nav-link d-flex p-0" href="${categoryDto.get('textile').url}">Textiles<span class="fs-sm text-muted ms-2">(3)</span></a></li>
+              <c:forEach var="category" items="${categoryDto}">
+
+                <c:set value="${category.value}" var="dto"/>
+                <li class="mb-2"><a class="nav-link d-flex p-0" href="${dto.url}-in--sulthan-bathery">${dto.categoryTitle}</a></li>
+              </c:forEach>
             </ul>
             <!-- Featured posts widget-->
             <%--<h4 class="pt-3 pt-lg-0 pb-1">Trending posts:</h4>

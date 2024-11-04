@@ -1,10 +1,13 @@
 package com.smashplus.cityxplor.service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smashplus.cityxplor.controller.RestUrlConstants;
-import com.smashplus.cityxplor.dto.EstablishmentDTO;
-import com.smashplus.cityxplor.dto.EstablishmentResponse;
-import com.smashplus.cityxplor.dto.ListResponse;
+import com.smashplus.cityxplor.dto.*;
+import com.smashplus.cityxplor.util.CommonUtil;
 import com.smashplus.cityxplor.util.ValConditions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -19,6 +22,8 @@ import java.util.List;
 
 @Service
 public class CityRestService    {
+    @Autowired
+    CommonRestService commonRestService;
     public ListResponse getResponseObj(String restUrl, String qParam){
 
         RestTemplate restTemplate = new RestTemplate();
@@ -58,9 +63,10 @@ public class CityRestService    {
         try {
             String criterion = null;
             String ordsRestUrl="establishment_tbl/";
+            //type="tags";
 
             if(!"all".equals(type)){
-                criterion =  "{\""+type+"\":"+value+"\"},\"$orderby\":{\""+sortOrder+"\":\"asc\"}}";
+                criterion =  "{\""+type+"\":{\"$like\":\"%"+value+"%\"}},\"$orderby\":{\""+sortOrder+"\":\"asc\"}}";
             }
             List<EstablishmentDTO> response=getListResponse(ordsRestUrl,null,criterion).getItems();
             return response;
@@ -134,6 +140,24 @@ public class CityRestService    {
         }
         return null;
     }
+    public List<DoctorDTO> findDoctorsOnSpecialty(String specialty) {
+        try {
+            //https://hkyhsgzdbc0teha-smashvoiddb.adb.ap-mumbai-1.oraclecloudapps.com/ords/shams/city/doctors/:speciality
+            String criterion = null;
+            String ordsRestUrl="city/doctors/"+specialty;
+            ObjectMapper mapper = new ObjectMapper(); // or inject it as a dependency
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+            List<DoctorDTO> pojos = mapper.convertValue(
+                    commonRestService.getListGenericResponse(ordsRestUrl,null,criterion).getItems(),
+                    new TypeReference<List<DoctorDTO>>() { });
+            return pojos;
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
     public EstablishmentDTO getResponse(String restUrl, String param){
         RestTemplate restTemplate = new RestTemplate();
         String url = RestUrlConstants.ORDS_PREFIX+restUrl ;
@@ -150,4 +174,5 @@ public class CityRestService    {
         }
         return responseDTO;
     }
+
 }

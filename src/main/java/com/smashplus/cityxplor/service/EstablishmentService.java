@@ -2,6 +2,7 @@ package com.smashplus.cityxplor.service;
 
 import com.smashplus.cityxplor.domain.EstablishmentEntity;
 import com.smashplus.cityxplor.domain.SpecialityTblEntity;
+import com.smashplus.cityxplor.dto.DoctorDTO;
 import com.smashplus.cityxplor.dto.EstablishmentCategoryDTO;
 import com.smashplus.cityxplor.dto.EstablishmentDTO;
 import com.smashplus.cityxplor.util.ValConditions;
@@ -94,6 +95,20 @@ public class EstablishmentService {
         }
         return null;
     }
+    public List<EstablishmentDTO> findListOfEstablishmentsOnSubCategory(String cityId,String category) {
+        try {
+            List<EstablishmentDTO> establishmentEntities =null;
+            if(!category.contains("all")) {
+                establishmentEntities = cityRestService.findEstablishments(cityId, category);
+            }else{
+                establishmentEntities = cityRestService.findEstablishments( cityId, "all");
+            }
+            return establishmentEntities;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
     public List<EstablishmentDTO> findListOfEstablishments(String cityId,String category, String sortOrder) {
         try {
             List<EstablishmentDTO> establishmentEntities =null;
@@ -154,6 +169,14 @@ public class EstablishmentService {
         try {
             List<SpecialityTblEntity> specialityTblEntities = specialityTblEntityRepository.findBySpecialityAndEstablishmentByEstabId_City(specialty,cityCode);
             return specialityTblEntities;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public List<DoctorDTO> findDoctorsOnSpecialityFromRest(String specialty, String cityCode) {
+        try {
+            return cityRestService.findDoctorsOnSpecialty(specialty);
         }catch (Exception e){
             e.printStackTrace();
         }

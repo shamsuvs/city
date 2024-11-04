@@ -1,8 +1,14 @@
 package com.smashplus.cityxplor.service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smashplus.cityxplor.domain.BlogPost;
+import com.smashplus.cityxplor.dto.NewsDTO;
 import com.smashplus.cityxplor.repository.BlogPostDAO;
+import com.smashplus.cityxplor.util.CommonUtil;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +17,8 @@ import java.util.List;
 
 @Service
 public class NewsService {
+    @Autowired
+    CommonRestService commonRestService;
     final BlogPostDAO blogPostDAO;
     public static String SITE="https://www.sultanbathery.com";
 
@@ -45,5 +53,23 @@ public class NewsService {
     public List<BlogPost> getNews(){
         List<BlogPost> blogPosts = blogPostDAO.findBySiteAndPublishEquals(SITE,1);
         return blogPosts;
+    }
+    public List<NewsDTO> fetchLatestNews(String cityId, String category, String sortOrder) {
+        try {
+            String criterion = null;
+            String ordsRestUrl="sz_blog_posts/";
+            criterion =  "{\"site\":\""+cityId+"\",\"$orderby\":{\""+sortOrder+"\":\"asc\"}}";
+
+            ObjectMapper mapper = new ObjectMapper(); // or inject it as a dependency
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+            List<NewsDTO> pojos = mapper.convertValue(
+                    commonRestService.getListGenericResponse(ordsRestUrl,null,criterion).getItems(),
+                    new TypeReference<List<NewsDTO>>() { });
+            return pojos;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

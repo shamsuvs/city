@@ -82,8 +82,8 @@
               <div class="col-sm-8">
                 <div class="card-body">
                   <h4 class="card-title">${doctor.name}</h4>
-                  <p class="card-text"><span class="text-uppercase">${doctor.degree}</span> - <span class="text-capitalize">${doctor.speciality}</span></p>
-                  <p class="card-text">Practising in <a href="/${doctor.establishmentByEstabId.url}-${doctor.establishmentByEstabId.id}--sb" ><span class="badge bg-faded-primary text-primary fs-sm">${doctor.establishmentByEstabId.estName}</span></a></p>
+                  <p class="card-text"><span class="text-uppercase">${doctor.qualification}</span> - <span class="text-capitalize">${doctor.specialityShortCode}</span></p>
+                  <p class="card-text">Practising in <a href="/${doctor.getEstablishmentDTO().get(0).uniqueSEOId}--sb" ><span class="badge bg-faded-primary text-primary fs-sm">${doctor.getEstablishmentDTO().get(0).title}</span></a></p>
                 </div>
               </div>
             </div>

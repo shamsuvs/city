@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.smashplus.cityxplor.domain.EstablishmentEntity;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DoctorDTO {
     @JsonProperty("id")
     private int id;
@@ -15,6 +18,8 @@ public class DoctorDTO {
     private String specialityShortCode;
     @JsonProperty("qualification")
     private String qualification;
+    @JsonProperty("establishmentdto")
+    private List<EstablishmentDTO> establishmentDTO=new ArrayList<>();
     public int getId() {
         return id;
     }
@@ -55,5 +60,11 @@ public class DoctorDTO {
         this.speciality = speciality;
     }
 
+    public List<EstablishmentDTO> getEstablishmentDTO() {
+        return establishmentDTO;
+    }
 
+    public void setEstablishmentDTO(List<EstablishmentDTO> establishmentDTO) {
+        this.establishmentDTO = establishmentDTO;
+    }
 }

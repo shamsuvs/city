@@ -1,10 +1,14 @@
 package com.smashplus.cityxplor.util;
 
+import com.smashplus.cityxplor.controller.RestUrlConstants;
 import com.smashplus.cityxplor.dto.EstablishmentCategoryDTO;
+import com.smashplus.cityxplor.dto.GenericResponse;
 import com.smashplus.cityxplor.service.EstablishmentCategoryService;
 import com.smashplus.cityxplor.service.EstablishmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -67,4 +71,5 @@ public class CommonUtil {
         establishmentCategoryDTOMap.put("all",establishmentCategoryDTO);
         return establishmentCategoryDTOMap;
     }
+
 }

@@ -182,7 +182,7 @@
                     <h4 class="card-title"> ${doctor.name} </h4>
                     <div class="d-flex align-items-center me-3 fs-lg text-uppercase"><i class="ai-clipboard me-1"></i>${doctor.qualification}</div>
 
-                    <h2 class="fs-base fw-normal text-muted mb-2 mb-sm-3 text-capitalize">Speciality : <a href="/list/${doctor.specialityShortCode}-doctors-list-sultan-bathery--sb"> ${doctor.specialityShortCode}</a></h2>
+                    <h2 class="fs-base fw-normal text-muted mb-2 mb-sm-3 text-capitalize">Speciality : <a href="/${doctor.specialityShortCode}-doctors--sultan-bathery"> ${doctor.specialityShortCode}</a></h2>
 
                   </div>
                 </div>
@@ -196,7 +196,7 @@
           <c:forTokens items="${entity.tags}" delims="," var="tag" varStatus="inx">
             <a class="nav-link fs-sm py-1 px-0 me-3" href="/tag-${fn:trim(tag)}--sb"><span class="text-primary">#</span> ${tag}</a>
           </c:forTokens>
-          <a class="nav-link fs-sm py-1 px-0 me-3" href="${categoryDto.get(entity.category).url}">
+          <a class="nav-link fs-sm py-1 px-0 me-3" href="${categoryDto.get(entity.category).url}-in--sulthan-bathery">
             <span class="text-primary">#</span>${entity.category}</a>
           <c:if test="${not empty entity.subCategory}">
             <a class="nav-link fs-sm py-1 px-0 me-3" href="/sc-${entity.subCategory}--sb">

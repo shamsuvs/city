@@ -1,5 +1,8 @@
 package com.smashplus.cityxplor.service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
@@ -11,7 +14,12 @@ import com.google.api.services.blogger.Blogger;
 import com.google.api.services.blogger.BloggerScopes;
 import com.google.api.services.blogger.model.Post;
 import com.google.api.services.blogger.model.PostList;
+import com.smashplus.cityxplor.dto.DoctorDTO;
+import com.smashplus.cityxplor.dto.EstablishmentDTO;
+import com.smashplus.cityxplor.dto.NewsDTO;
+import com.smashplus.cityxplor.util.CommonUtil;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +30,7 @@ import java.net.URI;
 import java.security.GeneralSecurityException;
 import java.security.PrivateKey;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -33,6 +42,7 @@ import java.util.Collections;
 @Service
 @Transactional
 public class BloggerService {
+
     /** Global instance of the HTTP transport. */
     private static HttpTransport httpTransport;
     /** Global instance of the JSON factory. */
@@ -161,5 +171,6 @@ public class BloggerService {
 
 
     }
+
 
 }

@@ -172,7 +172,7 @@
     }">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <div class="swiper-slide-cover bg-position-top-center" style="background-image: url(https://res.cloudinary.com/dw8him6rb/image/upload/v1665039458/city-explorer/school.jpg);"></div>
+                    <div class="swiper-slide-cover bg-position-top-center" style="background-image: url(https://res.cloudinary.com/dw8him6rb/image/upload/v1730616919/sulthan-bathery/sby-image1.jpg);"></div>
                 </div>
                 <div class="swiper-slide">
                     <div class="swiper-slide-cover bg-position-top-center" style="background-image: url(https://res.cloudinary.com/dw8him6rb/image/upload/v1665039140/city-explorer/textiles.jpg);"></div>
@@ -189,7 +189,7 @@
                 <div class="col py-5 mb-md-4 mb-lg-5">
                     <h1 class="display-2  mb-4">${cityObject.cityName}</h1>
                     <p class="d-block fs-xl pb-2 mb-4 mb-md-5" style="max-width: 500px;">${cityObject.teaser} Clean & Happiest City. Adapted at a high level to the needs of the modern pace of life.</p>
-                    <div class="position-relative d-inline-flex align-items-center"><a class="btn btn-icon btn-lg btn-primary rounded-circle stretched-link" href="https://www.youtube.com/watch?v=SZCxKjgReQ4" data-bs-toggle="video"><i class="ai-play-filled"></i></a><span class="fs-lg fw-semibold ms-3">Watch Video</span></div>
+                    <div class="position-relative d-inline-flex align-items-center"><a class="btn btn-icon btn-lg btn-primary rounded-circle stretched-link" href="https://www.youtube.com/watch?v=sr6vKYAJcE4" data-bs-toggle="video"><i class="ai-play-filled"></i></a><span class="fs-lg fw-semibold ms-3">Watch Video</span></div>
                 </div>
             </div>
         </div>
