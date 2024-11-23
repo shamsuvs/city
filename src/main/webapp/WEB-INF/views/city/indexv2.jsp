@@ -195,8 +195,8 @@
         </div>
     </section>
     <!-- Editor's picks (Carousel on screens < 992px)-->
-    <section class="container pb-3 mb-2 mb-lg-3 mb-xl-4 mb-xxl-5 pt-5">
-        <h2 class="h1 pb-3 pb-lg-4">Editor's picks</h2>
+    <section class="container pb-1 mb-1 mb-lg-2 pt-3">
+        <h2 class="h1 pb-3 pb-lg-4">Editor's Picks</h2>
         <div class="swiper" data-swiper-options="
       {
         &quot;spaceBetween&quot;: 24,
@@ -238,12 +238,14 @@
             <div class="swiper-pagination position-relative bottom-0 mt-2 pt-4 d-lg-none"></div>
         </div>
         <!-- Read more button-->
-        <div class="text-center pt-4 mt-2 mt-lg-0 pt-lg-5 pb-sm-2 pb-md-4"><a class="btn btn-primary" href="/all-establishments--sb">View All</a></div>
+        <div class="text-center" style="margin: 0; padding: 0;">
+            <a class="btn btn-primary" href="/all-establishments--sb" style="margin-top: 5px; margin-bottom: 0; padding: 10px 20px;">View all</a>
+        </div>
     </section>
     <!-- Classes (Tabs)-->
-    <section class="container pt-5 mt-lg-3 mt-xl-4 mt-xxl-5">
+    <section class="container pt-2 mt-lg-3 mt-xl-4 mt-xxl-5">
         <h2 class="h1 text-center pt-2 pt-sm-3">At your services</h2>
-        <p class="text-center pb-3 mb-3 mb-lg-4">Whether you are looking for services or products, these establishment can help you</p>
+        <p class="text-center pb-3 mb-3 mb-lg-4">Whether you are looking for services or products, these establishments can help you</p>
         <!-- Nav tabs-->
         <ul class="nav nav-tabs flex-nowrap overflow-auto text-nowrap w-100 mx-auto pb-3 mb-3 mb-lg-4" role="tablist" style="max-width: 892px;">
             <c:forEach items="${keys}" var="type" varStatus="ind">
@@ -256,7 +258,6 @@
         <div class="tab-content">
             <!-- tab item-->
             <c:forEach items="${keys}" var="type" varStatus="indx">
-
                     <div class="tab-pane fade show <c:if test="${indx.count eq 1}">active</c:if>" id="${type}" role="tabpanel">
                         <div class="row align-items-lg-center">
                             <div class="col-md-6 pb-4 pb-md-0 mb-2 mb-md-0"><img class="rounded-5" src="${categoryDto.get(type).image}" alt="Hospitals"></div>
@@ -272,7 +273,7 @@
                                                 <p class="fs-sm mb-0">${org.teaser}</p>
                                             </div>
                                         </c:forEach>
-                                    </div><a class="btn btn-primary w-100 w-sm-auto" href="${categoryDto.get(type).url}-in--sb">View All</a>
+                                    </div><a class="btn btn-primary w-100 w-sm-auto" href="${categoryDto.get(type).url}-in--sb">View all</a>
                                 </div>
                             </div>
                         </div>
@@ -284,7 +285,7 @@
      <!-- Popular articles (Carousel)-->
     <section class="bg-secondary py-5">
         <div class="container d-flex align-items-center pt-lg-2 pt-xl-4 pt-xxl-5 pb-3 mt-1 mt-sm-3 mb-3 my-md-4">
-            <h2 class="h1 mb-0">Most popular</h2>
+            <h2 class="h1 mb-0">Most popular List</h2>
             <div class="d-flex ms-auto">
                 <button class="btn btn-sm btn-icon btn-outline-primary rounded-circle ms-3" type="button" id="prev-popular"><i class="ai-arrow-left"></i></button>
                 <button class="btn btn-sm btn-icon btn-outline-primary rounded-circle ms-3" type="button" id="next-popular"><i class="ai-arrow-right"></i></button>

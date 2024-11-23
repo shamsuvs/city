@@ -7,9 +7,9 @@ spring:
   thymeleaf:
     encoding: UTF-8
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/sp1?allowPublicKeyRetrieval=true&useSSL=false
-    username: root
-    password: shams123@
+    url: jdbc:mysql://127.0.0.1:3306/mysql?allowPublicKeyRetrieval=true&useSSL=false
+    username: admin1
+    password: admin1
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:

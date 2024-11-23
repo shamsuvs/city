@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <!-- SEO Meta Tags-->
 <c:set var="title" value="Clean City"/>
-<c:set var="description" value="Clean city in India - Sulthan Bathery"/>
+<c:set var="description" value="Clean city in India - Sultan Bathery"/>
 
 <c:if test="${not empty param['title']}">
     <c:set var="title" value="${param['title']}" />
