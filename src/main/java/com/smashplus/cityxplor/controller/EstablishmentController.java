@@ -73,110 +73,7 @@ public class EstablishmentController {
         return "city/indexv2";
 
     }
-    /*@GetMapping({ "/{estName}-hospital-{id}--{cityCode}",
-            "/hotel-{estName}-{id}--{cityCode}",
-            "/{estName}-college-{id}--{cityCode}",
-            "/{estName}-school-{id}--{cityCode}",
-            "/technology-{estName}-{id}--{cityCode}",
-            "/textiles-{estName}-{id}--{cityCode}",
-            "/tourist-attraction-{estName}-{id}--{cityCode}",
-            "/{estName}-temple-{id}--{cityCode}",
-            "/{estName}-ep-{id}--{cityCode}"
-    })
-    public String getBusinessProfile(@PathVariable("estName") String estName, @PathVariable("cityCode") String cityCode, @PathVariable("id") String id, Model model) throws SPException {
-        //eg: /hotel-Jubilee-Restaurant-6--sb
-        //sulthan-bathery
 
-        try {
-            if(!cityCode.equals("sb")){
-                throw new Exception("City Code Not acceptable");
-            }
-            EstablishmentEntity establishmentEntity =establishmentService.findEstablishment(id);
-            model.addAttribute("entity", establishmentEntity);
-
-            String city = cityCode;
-            if (city.contains("sb")) {
-                city = "sultan-bathery";
-            }
-            model.addAttribute("city", city);
-            CityTableEntity cityTableEntity = listService.findCity(city);
-            model.addAttribute("cityObject", cityTableEntity);
-            model.addAttribute("cityNews", newsService.getNews());
-            model.addAttribute("relEntities", establishmentService.findEstablishmentsPublished(cityTableEntity.getId(),establishmentEntity.getCategory()));
-            Map<String, EstablishmentCategoryDTO> categoryDTO = commonUtil.getCategoryDTOMapFromRestService();
-            model.addAttribute("categoryDto", categoryDTO);
-            //model.addAttribute("categoryDto",commonUtil.getCategoryDTOMap());
-        }catch (Exception e){
-            throw new SPException("Error in fetching data: "+e.getMessage(),model);
-        }
-        return "city/business-profile";
-
-    }*/
-    /*@GetMapping({ "/{estName}-hospital-{id}--{cityCode}",
-            "/hotel-{estName}-{id}--{cityCode}",
-            "/{estName}-college-{id}--{cityCode}",
-            "/{estName}-school-{id}--{cityCode}",
-            "/technology-{estName}-{id}--{cityCode}",
-            "/textiles-{estName}-{id}--{cityCode}",
-            "/tourist-attraction-{estName}-{id}--{cityCode}",
-            "/{estName}-temple-{id}--{cityCode}",
-            "/{estName}-ep-{id}--{cityCode}"
-    })
-    public String getBusinessProfileAdv(@PathVariable("estName") String estName, @PathVariable("cityCode") String cityCode, @PathVariable("id") String id, Model model) throws SPException {
-        //eg: /hotel-Jubilee-Restaurant-6--sb
-        //sulthan-bathery
-
-        try {
-            if(!cityCode.equals("sb")){
-                throw new Exception("City Code Not acceptable");
-            }
-            EstablishmentDTO establishmentEntity =establishmentService.findEstablishmentProfile(id);
-            model.addAttribute("entity", establishmentEntity);
-
-            String city = cityCode;
-            if (city.contains("sb")) {
-                city = "sultan-bathery";
-            }
-            model.addAttribute("city", city);
-            //CityTableEntity cityTableEntity = listService.findCity(city);
-            //model.addAttribute("cityObject", cityTableEntity);
-            //model.addAttribute("cityNews", newsService.getNews());
-
-            model.addAttribute("relEntities", establishmentService.findListOfEstablishments("sultan-bathery",establishmentEntity.getCategory()));
-            model.addAttribute("categoryDto",commonUtil.getCategoryDTOMap());
-        }catch (Exception e){
-            throw new SPException("Error in fetching data: "+e.getMessage(),model);
-        }
-        return "city/business-profile-v2";
-
-    }*/
-
-
-    /*@GetMapping({ "/hospitals--{cityCode}",
-            "/hotels--{cityCode}","/schools--{cityCode}","/textiles--{cityCode}","all-establishments--{cityCode}",
-            "colleges--{cityCode}",
-            "temples--{cityCode}",
-    })
-    public String getBusinessProfileList(Model model, HttpServletRequest request, @PathVariable("cityCode") String cityCode) {
-        String city = "";
-        if(cityCode.equalsIgnoreCase("sb")){
-            city = "sultan-bathery";
-        }
-        model.addAttribute("city", city);
-        CityTableEntity cityTableEntity = listService.findCity(city);
-        model.addAttribute("cityObject", cityTableEntity);
-        String target = findTarget(request);
-        Map<String, EstablishmentCategoryDTO> categoryDTO = commonUtil.getCategoryDTOMapFromRestService();
-        if(ValConditions.isNotEmpty(categoryDTO.get(target))) {
-            model.addAttribute("target", categoryDTO.get(target).getCategoryTitle());
-            model.addAttribute("teaser", categoryDTO.get(target).getTeaser());
-        }
-        model.addAttribute("establishments", establishmentService.findEstablishmentsPublished(cityTableEntity.getId(),target));
-        /*model.addAttribute("cityNews", newsService.getNews());
-        model.addAttribute("categoryDto",categoryDTO);
-        return "city/business-list";
-    }
-*/
     @GetMapping({ "{estCode}-in--{cityCode}","all-establishments--{cityCode}"
     })
     public String getHospitals(Model model, HttpServletRequest request, @PathVariable(value = "estCode",required = false) String estCode, @PathVariable("cityCode") String cityCode) {
@@ -201,7 +98,10 @@ public class EstablishmentController {
         return "city/business-list-v2";
     }
     @GetMapping({ "/tag-{tag}--{cityCode}"})
-    public String getBusinessProfileListBasedOnTag(Model model, HttpServletRequest request, @PathVariable("cityCode") String cityCode, @PathVariable("tag") String tag) {
+    public String getBusinessProfileListBasedOnTag(Model model,
+                                                   HttpServletRequest request,
+                                                   @PathVariable("cityCode") String cityCode,
+                                                   @PathVariable("tag") String tag) {
         String city = "";
         if(cityCode.equalsIgnoreCase("sb")){
             city = "sulthan-bathery";
@@ -216,6 +116,10 @@ public class EstablishmentController {
         //model.addAttribute("categoryDto",commonUtil.getCategoryDTOMap());
         return "city/business-list";
     }
+
+
+
+
     @GetMapping({ "/{speciality}-doctors--{cityCode}"})
     public String getDoctorsBasedOnSpeciality(Model model, HttpServletRequest request, @PathVariable("cityCode") String cityCode, @PathVariable("speciality") String speciality) {
         String city = "";
