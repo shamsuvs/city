@@ -3,10 +3,11 @@ package com.smashplus.cityxplor.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.api.services.blogger.model.Post;
 import com.smashplus.cityxplor.domain.BlogPost;
 import com.smashplus.cityxplor.dto.NewsDTO;
 import com.smashplus.cityxplor.repository.BlogPostDAO;
-import com.smashplus.cityxplor.util.CommonUtil;
+import com.smashplus.cityxplor.util.ValConditions;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,41 +20,38 @@ import java.util.List;
 public class NewsService {
     @Autowired
     CommonRestService commonRestService;
-    final BlogPostDAO blogPostDAO;
+
     public static String SITE="https://www.sultanbathery.com";
+    @Autowired
+    CityRestService cityRestService;
+    BloggerService bloggerService;
 
-    public NewsService(BlogPostDAO blogPostDAO) {
-        this.blogPostDAO = blogPostDAO;
+    public NewsService(CityRestService cityRestService, BloggerService bs) {
+        this.cityRestService = cityRestService;
+        this.bloggerService  = bs;
     }
 
-    public String getPost(Model model, HttpServletRequest request, @PathVariable("shortUrl") String shortUrl) {
+    public NewsService() {
+    }
+
+
+    public String getNewsProfile(Model model, HttpServletRequest request, String shortUrl) {
         //request
-        model.addAttribute("canonical",request.getRequestURI());
-        String urlStr = request.getRequestURI().substring(1);
+        model.addAttribute("canonical","news/"+shortUrl);
 
-        System.out.println(urlStr);
-        BlogPost blog = getPostOnShortURL(urlStr);
-        /*if(ValConditions.isNotEmpty(blog)) {
-           Post post = bloggerService.getPostOnId(blog.getBlogId(), blog.getIdblogpost(), request);
+        System.out.println(shortUrl);
+        NewsDTO newsDTO = cityRestService.findNewsOnShortUrl(shortUrl);
+        if(ValConditions.isNotEmpty(newsDTO)) {
+           Post post = bloggerService.getPostOnId(newsDTO.getBlogId(), newsDTO.getPostId(), request);
             model.addAttribute("post", post);
-            model.addAttribute("subcategory",blog.getSubCategory());
-            model.addAttribute("blog",blog.getCategory());
             model.addAttribute("socialImage","https://res.cloudinary.com/dw8him6rb/image/upload/v1603103037/Technology_vums9q.jpg");
-            model.addAttribute("related",bloggerService.getRelatedPosts(post.getLabels(),blog.getIdblogpost()));
+            //model.addAttribute("related",bloggerService.getRelatedPosts(post.getLabels(),blog.getIdblogpost()));
         }
-*/
-        return "blog/blog-post";
+
+        return "success";
     }
 
-    public BlogPost getPostOnShortURL(String shortUrl){
-        BlogPost blogPost = blogPostDAO.findByShortUrlAndPublishEquals(shortUrl,1);
-        return blogPost;
-    }
 
-    public List<BlogPost> getNews(){
-        List<BlogPost> blogPosts = blogPostDAO.findBySiteAndPublishEquals(SITE,1);
-        return blogPosts;
-    }
     public List<NewsDTO> fetchLatestNews(String cityId, String category, String sortOrder) {
         try {
             String criterion = null;

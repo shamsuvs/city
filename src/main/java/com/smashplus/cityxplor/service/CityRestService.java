@@ -140,6 +140,18 @@ public class CityRestService    {
         }
         return null;
     }
+
+    public NewsDTO findNewsOnShortUrl(String url) {
+        try {
+            String ordsRestUrl="shams/sz_blog_posts/";
+            String criterion = "{\"custom_url\":\"" + url + "\",\"$orderby\":{\"title\":\"asc\"}}";
+            NewsResponse response=getNewsResponse(ordsRestUrl,null,criterion);
+            return response.getItems().get(0);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
     public List<DoctorDTO> findDoctorsOnSpecialty(String specialty) {
         try {
             //https://hkyhsgzdbc0teha-smashvoiddb.adb.ap-mumbai-1.oraclecloudapps.com/ords/shams/city/doctors/:speciality
@@ -169,6 +181,27 @@ public class CityRestService    {
         EstablishmentDTO responseDTO = null;
         try {
             responseDTO = restTemplate.getForObject(url, EstablishmentDTO.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return responseDTO;
+    }
+    private NewsResponse getNewsResponse(String restUrl, String param, String c){
+        RestTemplate restTemplate = new RestTemplate();
+        String url = RestUrlConstants.ORDS_PREFIX+restUrl ;
+        if(ValConditions.isNotEmpty(param)){
+            url=url+"/"+param;
+        }
+        if(ValConditions.isNotEmpty(c)){
+            url=url+"?q={criterion}";
+        }
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Type", "application/json");
+
+        NewsResponse responseDTO = null;
+        try {
+
+            responseDTO = restTemplate.getForObject(url, NewsResponse.class,c);
         } catch (Exception e) {
             e.printStackTrace();
         }

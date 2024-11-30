@@ -194,6 +194,56 @@
             </div>
         </div>
     </section>
+    <!-- Latest News-->
+
+    <!-- Latest posts -->
+    <section class="container py-5 my-md-2 my-lg-3 my-xl-4 my-xxl-5">
+        <h2 class="h1 pb-3 py-md-4">Latest posts</h2>
+        <div class="row pb-md-4 pb-lg-5">
+
+            <!-- Featured article -->
+            <div class="col-lg-6 pb-2 pb-lg-0 mb-4 mb-lg-0">
+                <article class="card h-100 border-0 position-relative overflow-hidden bg-size-cover bg-position-center me-lg-4" style="background-image: url(${news.get(0).image});">
+                    <div class="bg-dark position-absolute top-0 start-0 w-100 h-100 opacity-60"></div>
+                    <div class="card-body d-flex flex-column position-relative z-2 mt-sm-5">
+                        <h3 class="pt-5 mt-4 mt-sm-5 mt-lg-auto">
+                            <a class="stretched-link text-light" href="${news.get(0).customURL}">${news.get(0).title}</a>
+                        </h3>
+                        <p class="card-text text-light opacity-70">${news.get(0).teaser}</p>
+                        <div class="d-flex align-items-center">
+                            <span class="fs-sm text-light opacity-50">9 hours ago</span>
+                            <span class="fs-xs text-light opacity-30 mx-3">|</span>
+                            <a class="badge text-ligh fs-xs border border-light" href="#">${news.get(0).labels}</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Other articles -->
+            <div class="col-lg-6">
+                <div class="row row-cols-1 row-cols-sm-2 g-4">
+
+
+                    <!-- Article -->
+                    <c:forEach var="news" items="${news}" begin="1" end="4">
+                    <article class="col py-1 py-xl-2">
+                        <div class="border-bottom pb-4 ms-xl-3">
+                            <h3 class="h4">
+                                <a href="blog-single-v3.html">${news.title}</a>
+                            </h3>
+                            <p>${news.teaser}</p>
+                            <div class="d-flex align-items-center">
+                                <a class="badge text-nav fs-xs border" href="#">${news.labels}</a>
+                            </div>
+                        </div>
+                    </article>
+                    </c:forEach>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Editor's picks (Carousel on screens < 992px)-->
     <section class="container pb-1 mb-1 mb-lg-2 pt-3">
         <h2 class="h1 pb-3 pb-lg-4">Editor's Picks</h2>
@@ -218,7 +268,7 @@
                         <div class="card border-0 bg-secondary">
                             <div class="card-body pb-4">
                                 <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">
-                                    <a class="badge text-nav fs-xs border" href="${categoryDto.get(establishment.category).url}">${categoryDto.get(establishment.category).categoryTitle}</a></span>
+                                    <a class="badge text-nav fs-xs border" href="${categoryDto.get(establishment.category).url}-in--sultan-bathery">${categoryDto.get(establishment.category).categoryTitle}</a></span>
                                         <%--<span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Fashion</a>--%>
                                 </div>
                                 <h3 class="h4 card-title"><a href="${destUrl}">${establishment.title}</a></h3>
@@ -273,7 +323,7 @@
                                                 <p class="fs-sm mb-0">${org.teaser}</p>
                                             </div>
                                         </c:forEach>
-                                    </div><a class="btn btn-primary w-100 w-sm-auto" href="${categoryDto.get(type).url}-in--sb">View all</a>
+                                    </div><a class="btn btn-primary w-100 w-sm-auto" href="${categoryDto.get(type).url}-in--sultan-bathery">View all</a>
                                 </div>
                             </div>
                         </div>
@@ -320,7 +370,7 @@
                                             <c:set value="${establishment.category}" var="type"/>
                                             <%--<span class="fs-sm text-muted">${establishment.category}</span>
                                             <span class="fs-xs opacity-20 mx-3">|</span>--%>
-                                            <a class="badge text-nav fs-xs border" href="${categoryDto.get(type).url}">${categoryDto.get(type).categoryTitle}</a></div>
+                                            <a class="badge text-nav fs-xs border" href="${categoryDto.get(type).url}-in--sultan-bathery">${categoryDto.get(type).categoryTitle}</a></div>
                                         <h3 class="h4 card-title">
                                             <a href="/${establishment.uniqueSEOId}--sb">${establishment.title}</a>
                                         </h3>

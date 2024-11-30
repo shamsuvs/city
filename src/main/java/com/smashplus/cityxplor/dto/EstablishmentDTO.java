@@ -40,7 +40,7 @@ public class EstablishmentDTO {
 
     @JsonProperty("website")
     private String website;
-    @JsonProperty("youtubeUrl")
+    @JsonProperty("youtubeurl")
     private String youtubeUrl;
 
     @JsonProperty("about")

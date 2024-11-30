@@ -34,45 +34,7 @@ public class EstablishmentController {
         this.establishmentService = establishmentService;
         this.newsService = newsService;
     }
-    @GetMapping({ "/"})
-    public String getCityProfile(Model model){
-        String city = "sultan-bathery";
-        model.addAttribute("city", city);
-        CityTableEntity cityTableEntity = listService.findCity(city);
-        model.addAttribute("cityObject", cityTableEntity);
-        model.addAttribute("editorsPicks", establishmentService.findListOfEstablishments("sultan-bathery",null,"likes"));
-       // model.addAttribute("editorsPicks", );
 
-      List<EstablishmentEntity> entities  = new ArrayList<>();
-        //model.addAttribute("editorsPicks", editorsPicks);
-        List<EstablishmentDTO> establishmentEntities  =establishmentService.findListOfEstablishments("sultan-bathery",null,"name");
-        model.addAttribute("establishmentsAll", establishmentEntities);
-        establishmentEntities.stream().forEach(est-> {
-            EstablishmentEntity e = new EstablishmentEntity();
-            BeanUtils.copyProperties(est,e);
-            e.setUrl(est.getUniqueSEOId());
-            e.setEstName(est.getTitle());
-            entities.add(e);
-        });
-        BeanUtils.copyProperties(establishmentEntities, entities);
-
-     //   Map<String, List<EstablishmentEntity>> estabGroup =  establishmentEntities.stream().collect(Collectors.groupingBy(w -> w.)
-
-             //   List<EstablishmentEntity> establishmentEntities  = establishments.findEstablishmentsByFilter(cityTableEntity.getId(),null,"name");
-        model.addAttribute("establishmentsAll", establishmentEntities);
-
-        Map<String, List<EstablishmentEntity>> estabGroup =
-                entities.stream().collect(Collectors.groupingBy(w -> w.getCategory()!=null?w.getCategory():"other"));
-        model.addAttribute("estabGroup", estabGroup);
-        SortedSet<String> keys = new TreeSet<>(estabGroup.keySet());
-        model.addAttribute("keys",keys);
-        //model.addAttribute("categoryDto",commonUtil.getCategoryDTOMap());
-        Map<String, EstablishmentCategoryDTO> categoryDTO = commonUtil.getCategoryDTOMapFromRestService();
-        model.addAttribute("categoryDto", categoryDTO);
-        model.addAttribute("news", newsService.fetchLatestNews("sultan-bathery",null,"title"));
-        return "city/indexv2";
-
-    }
 
     @GetMapping({ "{estCode}-in--{cityCode}","all-establishments--{cityCode}"
     })
