@@ -242,7 +242,7 @@
     </section>
     <!-- Classes (Tabs)-->
     <section class="container pt-5 mt-lg-3 mt-xl-4 mt-xxl-5">
-        <h2 class="h1 text-center pt-2 pt-sm-3">At your services</h2>
+        <h2 class="h1 text-center pt-2 pt-sm-3">At your Services</h2>
         <p class="text-center pb-3 mb-3 mb-lg-4">Whether you are looking for services or products, these establishment can help you</p>
         <!-- Nav tabs-->
         <ul class="nav nav-tabs flex-nowrap overflow-auto text-nowrap w-100 mx-auto pb-3 mb-3 mb-lg-4" role="tablist" style="max-width: 892px;">

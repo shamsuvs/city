@@ -46,7 +46,7 @@
   <link rel="stylesheet" media="screen" href="/css/vendor/swiper/swiper-bundle.min.css"/>
   <!-- Main Theme Styles + Bootstrap-->
   <c:import url="/WEB-INF/views/common/head-4a.jsp">
-    <c:param name="title" value="Blog Posts - Sultan Bathery" />
+    <c:param name="title" value="News and Articles - Sultan Bathery" />
     <c:param name="desc" value="News and Blog articles about Sultan Bathery" />
     <c:param name="kw" value="Blog Posts,Sultan Bathery" />
   </c:import>
@@ -73,20 +73,26 @@
       <div class="col-lg-9 pe-lg-4 pe-xl-5">
         <h1 class="pb-3 pb-lg-4">${target}</h1>
         <p>${teaser}</p>
-        <c:forEach items="${posts.items}" var="post">
+        <c:forEach items="${newsList}" var="news">
           <c:set var="imgURL" value="/img/blog/03.jpg"/>
-          <c:if test="${not empty post.images[0].url}">
-            <c:set var="imgURL" value="${post.images[0].url}"/>
+          <c:if test="${not empty news.image}">
+            <c:set var="imgURL" value="${news.image}"/>
           </c:if>
-          <c:set var="titleurl" value="${fn:replace(post.title,' ', '_')}" />
-          <c:set var="fullurl" value="${blogId}-post/${fn:toLowerCase(titleurl)}-${post.id}" />
+
+          <c:set var="fullurl" value="/news/${fn:toLowerCase(news.customURL)}" />
           <!-- Post-->
-          <article class="row g-0 border-0 mb-4"><a class="col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="/${fullurl}" style="background-image: url(${imgURL}); min-height: 14rem"></a>
+          <article class="row g-0 border-0 mb-4"><a class="col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="${fullurl}" style="background-image: url(${imgURL}); min-height: 14rem"></a>
             <div class="col-sm-7">
               <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
-                <h3><a href="/${fullurl}">${post.title}</a></h3>
+                <h3><a href="${fullurl}">${news.title}</a></h3>
                 <div class="d-flex flex-wrap align-items-center mt-n2">
-                  <span class="fs-sm text-muted mt-2">${post.tags}</span>
+                  <span class="fs-sm text-muted mt-2">
+                      <c:forTokens items="${news.labels}" delims="," var="tag" varStatus="inx">
+                        <a class="btn btn-outline-secondary rounded-pill mt-3 ms-3" href="/tag-${fn:trim(tag)}-news--sb">${tag}</a>
+                      </c:forTokens>
+
+                      </span>
+                </div>
               </div>
             </div>
           </article>

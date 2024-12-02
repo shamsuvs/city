@@ -21,7 +21,7 @@ public class CommonUtil {
     EstablishmentService establishmentService;
     public List<EstablishmentCategoryDTO> getCategoryDTO(){
         List<EstablishmentCategoryDTO> list = new ArrayList<>();
-        EstablishmentCategoryDTO establishmentCategoryDTO=new EstablishmentCategoryDTO("Hospitals","https://res.cloudinary.com/dw8him6rb/image/upload/v1665039690/city-explorer/hospital.jpg","Best Hospitals","/hospitals--sb","hospital");
+        EstablishmentCategoryDTO establishmentCategoryDTO=new EstablishmentCategoryDTO("Hospitals","https://res.cloudinary.com/dw8him6rb/image/upload/v1665039690/city-explorer/hospital.jpg","Best Hospitals","/hospital-in--sulthan-bathery","hospital");
         list.add(establishmentCategoryDTO);
         establishmentCategoryDTO=new EstablishmentCategoryDTO("Hotels","https://res.cloudinary.com/dw8him6rb/image/upload/v1663933000/cld-sample-4.jpg","Best Hotels","/hotels--sb","hotel");
         list.add(establishmentCategoryDTO);
@@ -34,7 +34,9 @@ public class CommonUtil {
     public Map<String, EstablishmentCategoryDTO> getCategoryDTOMapFromRestService(){
         Map<String,EstablishmentCategoryDTO> establishmentCategoryDTOMap = new HashMap<>();
         List<EstablishmentCategoryDTO>  establishmentCategoryDTOS = establishmentService.fetchEstablishmentCategories();
-        establishmentCategoryDTOS.stream().forEach(establishmentCategoryDTO -> establishmentCategoryDTOMap.put(establishmentCategoryDTO.getKey(),establishmentCategoryDTO));
+        if(ValConditions.isNotEmpty(establishmentCategoryDTOS)) {
+            establishmentCategoryDTOS.stream().forEach(establishmentCategoryDTO -> establishmentCategoryDTOMap.put(establishmentCategoryDTO.getKey(), establishmentCategoryDTO));
+        }
         return establishmentCategoryDTOMap;
     }
     public List<EstablishmentCategoryDTO> getCategoryDTOlistFromRestService(){
@@ -44,7 +46,7 @@ public class CommonUtil {
     }
     public Map<String, EstablishmentCategoryDTO> getCategoryDTOMap(){
         Map<String,EstablishmentCategoryDTO> establishmentCategoryDTOMap = new HashMap<>();
-        EstablishmentCategoryDTO establishmentCategoryDTO=new EstablishmentCategoryDTO("Hospitals","https://res.cloudinary.com/dw8him6rb/image/upload/v1665039690/city-explorer/hospital.jpg","Best Hospitals","/hospitals--sb","hospital");
+        EstablishmentCategoryDTO establishmentCategoryDTO=new EstablishmentCategoryDTO("Hospitals","https://res.cloudinary.com/dw8him6rb/image/upload/v1665039690/city-explorer/hospital.jpg","Best Hospitals","/hospital-in--sulthan-bathery","hospital");
         establishmentCategoryDTOMap.put("hospital",establishmentCategoryDTO);
         establishmentCategoryDTO=new EstablishmentCategoryDTO("Hotels","https://res.cloudinary.com/dw8him6rb/image/upload/v1663933000/cld-sample-4.jpg","Best Hotels","/hotels--sb","hotel");
         establishmentCategoryDTOMap.put("hotel",establishmentCategoryDTO);

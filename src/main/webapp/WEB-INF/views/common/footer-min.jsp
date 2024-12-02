@@ -13,6 +13,6 @@
             <li class="list-inline-item my-1"><a class="nav-link-style" href="https://www.smashplus.com/contact">Contacts</a></li>
             <li class="list-inline-item my-1"><a class="nav-link-style" href="https://www.smashplus.com/privacy-policy-web">Privacy Policy</a></li>
         </ul>
-        <p class="fs-sm mb-0 me-3 order-md-1"><span class="text-muted me-1">&copy; Copyright - smashvoid 2013-25.</span></p>
+        <p class="fs-sm mb-0 me-3 order-md-1"><span class="text-muted me-1">&copy; Copyright - smashplus.</span></p>
     </div>
 </footer>

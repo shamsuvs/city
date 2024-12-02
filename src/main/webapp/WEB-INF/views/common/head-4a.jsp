@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta charset="utf-8">
 <!-- SEO Meta Tags-->
-<c:set var="title" value="Clean City"/>
+<c:set var="title" value="Sultan Bathery - Cleanest City in Kerala"/>
 <c:set var="description" value="Clean city in India - Sultan Bathery"/>
 
 <c:if test="${not empty param['title']}">

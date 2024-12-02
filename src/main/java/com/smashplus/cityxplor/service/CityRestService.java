@@ -141,12 +141,15 @@ public class CityRestService    {
         return null;
     }
 
-    public NewsDTO findNewsOnShortUrl(String url) {
+    public NewsDTO findNewsOnShortUrl(String param,String c) {
         try {
-            String ordsRestUrl="shams/sz_blog_posts/";
-            String criterion = "{\"custom_url\":\"" + url + "\",\"$orderby\":{\"title\":\"asc\"}}";
-            NewsResponse response=getNewsResponse(ordsRestUrl,null,criterion);
-            return response.getItems().get(0);
+            String ordsRestUrl="sz_blog_posts/";
+            String criterion = null;
+            if(c!=null) {
+                criterion = "{\"custom_url\":\"" + c + "\",\"$orderby\":{\"title\":\"asc\"}}";
+            }
+
+            return getNewsResponse(ordsRestUrl,param,criterion);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -186,11 +189,11 @@ public class CityRestService    {
         }
         return responseDTO;
     }
-    private NewsResponse getNewsResponse(String restUrl, String param, String c){
+    private NewsDTO getNewsResponse(String restUrl, String param, String c){
         RestTemplate restTemplate = new RestTemplate();
         String url = RestUrlConstants.ORDS_PREFIX+restUrl ;
         if(ValConditions.isNotEmpty(param)){
-            url=url+"/"+param;
+            url=url+param;
         }
         if(ValConditions.isNotEmpty(c)){
             url=url+"?q={criterion}";
@@ -198,10 +201,10 @@ public class CityRestService    {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json");
 
-        NewsResponse responseDTO = null;
+        NewsDTO responseDTO = null;
         try {
 
-            responseDTO = restTemplate.getForObject(url, NewsResponse.class,c);
+            responseDTO = restTemplate.getForObject(url, NewsDTO.class,c);
         } catch (Exception e) {
             e.printStackTrace();
         }

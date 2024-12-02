@@ -8,6 +8,7 @@ import com.smashplus.cityxplor.service.EstablishmentService;
 import com.smashplus.cityxplor.service.ListService;
 import com.smashplus.cityxplor.service.NewsService;
 import com.smashplus.cityxplor.util.CommonUtil;
+import com.smashplus.cityxplor.util.ValConditions;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -68,29 +69,33 @@ public class CityController {
         //model.addAttribute("editorsPicks", editorsPicks);
         List<EstablishmentDTO> establishmentEntities  =establishmentService.findListOfEstablishments("sultan-bathery",null,"name");
         model.addAttribute("establishmentsAll", establishmentEntities);
-        establishmentEntities.stream().forEach(est-> {
-            EstablishmentEntity e = new EstablishmentEntity();
-            BeanUtils.copyProperties(est,e);
-            e.setUrl(est.getUniqueSEOId());
-            e.setEstName(est.getTitle());
-            entities.add(e);
-        });
-        BeanUtils.copyProperties(establishmentEntities, entities);
+        if(ValConditions.isNotEmpty(establishmentEntities)) {
+            establishmentEntities.stream().forEach(est -> {
+                EstablishmentEntity e = new EstablishmentEntity();
+                BeanUtils.copyProperties(est, e);
+                e.setUrl(est.getUniqueSEOId());
+                e.setEstName(est.getTitle());
+                entities.add(e);
+            });
+            BeanUtils.copyProperties(establishmentEntities, entities);
+        }
 
         //   Map<String, List<EstablishmentEntity>> estabGroup =  establishmentEntities.stream().collect(Collectors.groupingBy(w -> w.)
 
         //   List<EstablishmentEntity> establishmentEntities  = establishments.findEstablishmentsByFilter(cityTableEntity.getId(),null,"name");
         model.addAttribute("establishmentsAll", establishmentEntities);
+        if(ValConditions.isNotEmpty(entities)) {
+            Map<String, List<EstablishmentEntity>> estabGroup =
+                    entities.stream().collect(Collectors.groupingBy(w -> w.getCategory() != null ? w.getCategory() : "other"));
+            model.addAttribute("estabGroup", estabGroup);
+            SortedSet<String> keys = new TreeSet<>(estabGroup.keySet());
+            model.addAttribute("keys",keys);
+        }
 
-        Map<String, List<EstablishmentEntity>> estabGroup =
-                entities.stream().collect(Collectors.groupingBy(w -> w.getCategory()!=null?w.getCategory():"other"));
-        model.addAttribute("estabGroup", estabGroup);
-        SortedSet<String> keys = new TreeSet<>(estabGroup.keySet());
-        model.addAttribute("keys",keys);
         //model.addAttribute("categoryDto",commonUtil.getCategoryDTOMap());
         Map<String, EstablishmentCategoryDTO> categoryDTO = commonUtil.getCategoryDTOMapFromRestService();
         model.addAttribute("categoryDto", categoryDTO);
-        model.addAttribute("news", newsService.fetchLatestNews("sultan-bathery",null,"title"));
+        model.addAttribute("news", newsService.fetchLatestNews("sultan-bathery","created_date","desc"));
         return "city/indexv2";
 
     }

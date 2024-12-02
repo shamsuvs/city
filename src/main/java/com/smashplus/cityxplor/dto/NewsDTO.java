@@ -3,6 +3,9 @@ package com.smashplus.cityxplor.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class NewsDTO {
+
+    @JsonProperty("id")
+    int id;
     @JsonProperty("title")
     String title;
     @JsonProperty("custom_url")
@@ -17,6 +20,26 @@ public class NewsDTO {
     String labels;
     @JsonProperty("teaser")
     String teaser;
+    @JsonProperty("news_body")
+    String newsBody;
+    @JsonProperty("created_date")
+    String createdDate;
+
+    public String getNewsBody() {
+        return newsBody;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public void setNewsBody(String newsBody) {
+        this.newsBody = newsBody;
+    }
 
     public String getTitle() {
         return title;
@@ -72,5 +95,13 @@ public class NewsDTO {
 
     public void setTeaser(String teaser) {
         this.teaser = teaser;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -47,7 +47,7 @@
   <link rel="stylesheet" media="screen" href="/css/vendor/swiper/swiper-bundle.min.css"/>
   <!-- Main Theme Styles + Bootstrap-->
   <c:import url="/WEB-INF/views/common/head-4a.jsp">
-    <c:param name="title" value="${post.title}" />
+    <c:param name="title" value="${news.title}" />
     <c:param name="desc" value="${news.teaser} - Sultan Bathery" />
   </c:import>
 </head>
@@ -71,13 +71,14 @@
     <div class="row">
       <div class="col-lg-9 col-xl-8 pe-lg-4 pe-xl-0">
         <!-- Post title + post meta-->
-        <h1 class="pb-2 pb-lg-3">${post.title}</h1>
+        <h1 class="pb-2 pb-lg-3">${news.title}</h1>
         <div class="d-flex flex-wrap align-items-center justify-content-between border-bottom mb-4">
           <div class="d-flex align-items-center mb-4 me-4"><span class="fs-sm me-2">By:</span><a class="nav-link position-relative fw-semibold p-0" href="https://www.smashplus.com" data-scroll data-scroll-offset="80">Smashplus<span class="d-block position-absolute start-0 bottom-0 w-100" style="background-color: currentColor; height: 1px;"></span></a></div>
           <%--<div class="d-flex align-items-center mb-4"><span class="fs-sm me-2">Share post:</span>
             <div class="d-flex"><a class="nav-link p-2 me-2" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Instagram"><i class="ai-instagram"></i></a><a class="nav-link p-2 me-2" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook"><i class="ai-facebook"></i></a><a class="nav-link p-2 me-2" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram"><i class="ai-telegram fs-sm"></i></a><a class="nav-link p-2" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter"><i class="ai-twitter"></i></a></div>
           </div>--%>
         </div>
+        <!-- Post content-->
         <div class="card border-0 bg-secondary mb-3">
           <div class="card-body">
             <figure>
@@ -87,14 +88,17 @@
             </figure>
           </div>
         </div>
-        <!-- Post content-->
-
-        <p class="fs-lg pt-2 pt-sm-3">${post.content}</p>
+        <c:if test="${not empty news.image}">
+          <figure class="figure"><img class="figure-img rounded-5 mb-3" src="${news.image}" alt="${news.title}">
+            <figcaption class="figure-caption">Image: ${news.title}</figcaption>
+          </figure>
+        </c:if>
+        <p class="fs-lg pt-2 pt-sm-3">${news.newsBody}</p>
 
         <!-- Tags-->
         <div class="d-flex flex-wrap pb-5 pt-3 pt-md-4 pt-xl-5 mt-xl-n2">
           <h3 class="h6 py-1 mb-0 me-4">Relevant tags:</h3>
-          <c:forEach items="${post.labels}" var="tag" varStatus="inx">
+          <c:forEach items="${news.labels}" var="tag" varStatus="inx">
             <a class="nav-link fs-sm py-1 px-0 me-3" href="/${blgid}/${fn:trim(tag)}"><span class="text-primary">#</span> ${tag}</a>
           </c:forEach>
         </div>

@@ -1,10 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="author" content="smashplus">
+    <meta name="author" content="admin">
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
@@ -137,8 +138,8 @@
     <!-- Vendor styles-->
     <link rel="stylesheet" media="screen" href="/css/vendor/swiper/swiper-bundle.min.css"/>
     <c:import url="/WEB-INF/views/common/head-4a.jsp">
-        <c:param name="title" value="${cityObject.cityName}" />
-        <c:param name="desc" value="${cityObject.cityName} - ${cityObject.teaser}" />
+        <c:param name="title" value="Discover Sultan Bathery - Gateway to Wayanad's natural Beauty" />
+        <c:param name="desc" value="Sultan Bathery is the beautiful town in Wayanad, Kerala. It is populary known for its tourism and cleanliness." />
         <c:param name="kw" value="${cityObject.cityName} - ${cityObject.teaser}" />
     </c:import>
 </head>
@@ -188,7 +189,7 @@
             <div class="row pt-md-3 py-xxl-5 my-5">
                 <div class="col py-5 mb-md-4 mb-lg-5">
                     <h1 class="display-2  mb-4">${cityObject.cityName}</h1>
-                    <p class="d-block fs-xl pb-2 mb-4 mb-md-5" style="max-width: 500px;">${cityObject.teaser} Clean & Happiest City. Adapted at a high level to the needs of the modern pace of life.</p>
+                    <p class="d-block fs-xl pb-2 mb-4 mb-md-5" style="max-width: 500px;">Discover Sultan Bathery - Gateway to Wayanad's natural Beauty. Adapted at a high level to the needs of the modern pace of life.</p>
                     <div class="position-relative d-inline-flex align-items-center"><a class="btn btn-icon btn-lg btn-primary rounded-circle stretched-link" href="https://www.youtube.com/watch?v=sr6vKYAJcE4" data-bs-toggle="video"><i class="ai-play-filled"></i></a><span class="fs-lg fw-semibold ms-3">Watch Video</span></div>
                 </div>
             </div>
@@ -207,13 +208,17 @@
                     <div class="bg-dark position-absolute top-0 start-0 w-100 h-100 opacity-60"></div>
                     <div class="card-body d-flex flex-column position-relative z-2 mt-sm-5">
                         <h3 class="pt-5 mt-4 mt-sm-5 mt-lg-auto">
-                            <a class="stretched-link text-light" href="${news.get(0).customURL}">${news.get(0).title}</a>
+
+
+                            <a class="stretched-link text-light" href="/news/${news.get(0).customURL}">${news.get(0).title}</a>
                         </h3>
                         <p class="card-text text-light opacity-70">${news.get(0).teaser}</p>
                         <div class="d-flex align-items-center">
-                            <span class="fs-sm text-light opacity-50">9 hours ago</span>
+                            <span class="fs-sm text-light opacity-50">${news.get(0).createdDate}</span>
                             <span class="fs-xs text-light opacity-30 mx-3">|</span>
-                            <a class="badge text-ligh fs-xs border border-light" href="#">${news.get(0).labels}</a>
+                            <c:forTokens items="${news.get(0).labels}" delims="," var="tag" varStatus="inx">
+                                <a class="badge text-light fs-xs border border-light" href="/tag-${fn:trim(tag)}-news--sb">${tag}</a>
+                            </c:forTokens>
                         </div>
                     </div>
                 </article>
@@ -229,17 +234,21 @@
                     <article class="col py-1 py-xl-2">
                         <div class="border-bottom pb-4 ms-xl-3">
                             <h3 class="h4">
-                                <a href="blog-single-v3.html">${news.title}</a>
+                                <a href="/news/${news.customURL}">${news.title}</a>
                             </h3>
                             <p>${news.teaser}</p>
                             <div class="d-flex align-items-center">
-                                <a class="badge text-nav fs-xs border" href="#">${news.labels}</a>
+                                <c:forTokens items="${news.labels}" delims="," var="tag" varStatus="indx">
+                                    <a class="badge text-nav fs-xs border" href="/tag-${fn:trim(tag)}-news--sb">${tag}</a>
+                                </c:forTokens>
+
                             </div>
                         </div>
                     </article>
                     </c:forEach>
 
                 </div>
+                <a class="btn btn-primary w-100 w-sm-auto" href="all-wayanad-news">View all news</a>
             </div>
         </div>
     </section>
@@ -335,7 +344,7 @@
      <!-- Popular articles (Carousel)-->
     <section class="bg-secondary py-5">
         <div class="container d-flex align-items-center pt-lg-2 pt-xl-4 pt-xxl-5 pb-3 mt-1 mt-sm-3 mb-3 my-md-4">
-            <h2 class="h1 mb-0">Most popular List</h2>
+            <h2 class="h1 mb-0">Most popular</h2>
             <div class="d-flex ms-auto">
                 <button class="btn btn-sm btn-icon btn-outline-primary rounded-circle ms-3" type="button" id="prev-popular"><i class="ai-arrow-left"></i></button>
                 <button class="btn btn-sm btn-icon btn-outline-primary rounded-circle ms-3" type="button" id="next-popular"><i class="ai-arrow-right"></i></button>
