@@ -131,6 +131,33 @@
                 <h3 class="h2 pt-3 mb-0">Advertise here!</h3>
               </div><img class="rounded-5" src="/img/blog/sidebar/banner.jpg" alt="Banner">
             </div>
+
+            <!--Banner 2-->
+            <div class="ad-banner position-relative mb-3" style="width: 100%; max-width: 600px; margin: 0 auto; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); font-family: Arial, sans-serif;">
+              <!-- Background Gradient -->
+              <div style="background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; text-align: center; padding: 20px 30px;">
+                <!-- Content -->
+                <h2 style="font-size: 1.8rem; font-weight: bold; margin-bottom: 10px;">List Your Business for Free!</h2>
+                <p style="font-size: 1rem; margin: 10px 0 20px; line-height: 1.5;">
+                  Reach a wider audience by featuring your business on our platform at no cost. Let's help you grow!
+                </p>
+                <!-- Contact Details -->
+                <div style="font-size: 1.1rem; font-weight: bold;">
+                  <p>
+                    📞 <a href="tel:917994648660" style="color: #ffd700; text-decoration: none;">7994648660</a>
+                  </p>
+                  <p>
+                    📧 <a href="mailto:support@smashplus.com" style="color: #ffd700; text-decoration: none;">support@smashplus.com</a>
+                  </p>
+                </div>
+                <!-- Call-to-Action Button -->
+                <a href="mailto:support@smashplus.com" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #ffd700; color: #2e7d32; font-size: 1rem; font-weight: bold; border-radius: 5px; text-decoration: none;">
+                  Get Started Now
+                </a>
+              </div>
+            </div>
+
+
           </div>
         </div>
       </aside>

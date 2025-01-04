@@ -238,7 +238,7 @@
             <div class="swiper-pagination position-relative bottom-0 mt-2 pt-4 d-lg-none"></div>
         </div>
         <!-- Read more button-->
-        <div class="text-center pt-4 mt-2 mt-lg-0 pt-lg-5 pb-sm-2 pb-md-4"><a class="btn btn-primary" href="/all-establishments--sb">View All</a></div>
+        <div class="text-center pt-4 mt-2 mt-lg-0 pt-lg-5 pb-sm-2 pb-md-4"><a class="btn btn-primary" href="/all-establishments-in--sultan-bathery">View All</a></div>
     </section>
     <!-- Classes (Tabs)-->
     <section class="container pt-5 mt-lg-3 mt-xl-4 mt-xxl-5">

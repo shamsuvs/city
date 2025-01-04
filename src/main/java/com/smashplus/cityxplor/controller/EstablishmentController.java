@@ -41,7 +41,7 @@ public class EstablishmentController {
     public String getHospitals(Model model, HttpServletRequest request, @PathVariable(value = "estCode",required = false) String estCode, @PathVariable("cityCode") String cityCode) {
         String city = "";
         if(cityCode.equalsIgnoreCase("sb")){
-            city = "sulthan-bathery";
+            city = "sultan-bathery";
         }
        // String target = "all";
        // target = findTarget(request);
@@ -66,7 +66,7 @@ public class EstablishmentController {
                                                    @PathVariable("tag") String tag) {
         String city = "";
         if(cityCode.equalsIgnoreCase("sb")){
-            city = "sulthan-bathery";
+            city = "sultan-bathery";
         }
         model.addAttribute("city", city);
         CityTableEntity cityTableEntity = listService.findCity(city);
@@ -86,7 +86,7 @@ public class EstablishmentController {
     public String getDoctorsBasedOnSpeciality(Model model, HttpServletRequest request, @PathVariable("cityCode") String cityCode, @PathVariable("speciality") String speciality) {
         String city = "";
         if(cityCode.equalsIgnoreCase("sb")){
-            city = "sulthan-bathery";
+            city = "sultan-bathery";
         }
         model.addAttribute("city", city);
         CityTableEntity cityTableEntity = listService.findCity(city);
@@ -95,7 +95,7 @@ public class EstablishmentController {
         model.addAttribute("doctors", establishmentService.findDoctorsOnSpecialityFromRest(speciality, "sultan-bathery"));
         Map<String, EstablishmentCategoryDTO> categoryDTO = commonUtil.getCategoryDTOMapFromRestService();
         model.addAttribute("categoryDto", categoryDTO);
-        model.addAttribute("teaser",speciality +" Doctors in Sulthan Bathery");
+        model.addAttribute("teaser",speciality +" Doctors in Sultan Bathery");
         model.addAttribute("listDet",listService.getListDetails(speciality));
         return "city/doctors-list";
     }
@@ -103,7 +103,7 @@ public class EstablishmentController {
     public String getBusinessProfileListBasedOnSc(Model model, HttpServletRequest request, @PathVariable("sub-cat") String subCat, @PathVariable("cityCode") String cityCode) {
         String city = "";
         if(cityCode.equalsIgnoreCase("sb")){
-            city = "sulthan-bathery";
+            city = "sultan-bathery";
         }
         model.addAttribute("city", city);
         CityTableEntity cityTableEntity = listService.findCity(city);
@@ -123,7 +123,7 @@ public class EstablishmentController {
             target="2";
         }else if(request.getRequestURL().toString().contains("hospitals")){
             target="1";
-        }else if(request.getRequestURL().toString().contains("texti")){
+        }else if(request.getRequestURL().toString().contains("textile")){
             target="textile";
         }else if(request.getRequestURL().toString().contains("schools")){
             target="21";
@@ -162,7 +162,7 @@ public class EstablishmentController {
     })
     public String getBusinessProfileAdv(@PathVariable("estName") String estName, @PathVariable("cityCode") String cityCode, Model model) throws SPException {
         //eg: /hotel-Jubilee-Restaurant-6--sb
-        //sulthan-bathery
+        //sultan-bathery
 
         try {
             if(!cityCode.equals("sb")){

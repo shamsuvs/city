@@ -165,7 +165,8 @@
             <div class="jarallax ratio ratio-16x9 d-flex align-items-center justify-content-center" data-jarallax="" data-speed="0.6">
 
               <div class="w-auto position-relative p-4"><a class="btn btn-icon btn-xl btn-primary rounded-circle stretched-link" href="https://www.youtube.com/watch?v=${entity.youtubeUrl}" data-bs-toggle="video" data-lg-id="a4cd7a6d-23f6-4a66-8e64-f2561d96490f"><i class="ai-play-filled"></i></a></div>
-              <div id="jarallax-container-1" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; z-index: -100; clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%);"><div class="jarallax-img" style="background-image: url(&quot;${entity.image1}&quot;); object-fit: cover; object-position: 50%; max-width: none; position: absolute; top: 0px; left: 0px; width: 1296px; height: 564.2px; overflow: hidden; pointer-events: none; transform-style: preserve-3d; backface-visibility: hidden; margin-top: -123.60000000000002px; transform: translate3d(0px, -178.2125px, 0px);" data-jarallax-original-styles="background-image: url(assets/img/landing/coworking-space/parallax-image.jpg);"></div></div></div>
+              <div id="jarallax-container-1" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; z-index: -100; clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%);"><div class="jarallax-img"
+                                                                                                                                                                                                                           data-jarallax-original-styles="background-image: url(assets/img/landing/coworking-space/parallax-image.jpg);"></div></div></div>
           </div>
         </section>
         </c:if>

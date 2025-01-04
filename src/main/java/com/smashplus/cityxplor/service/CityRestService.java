@@ -59,7 +59,7 @@ public class CityRestService    {
         }
         return null;
     }
-    public List<EstablishmentDTO> findEstablishmentsFileter(String cityId, String type, String value, String sortOrder) {
+    public List<EstablishmentDTO> findEstablishmentsFilter(String cityId, String type, String value, String sortOrder) {
         try {
             String criterion = null;
             String ordsRestUrl="establishment_tbl/";
@@ -155,6 +155,7 @@ public class CityRestService    {
         }
         return null;
     }
+
     public List<DoctorDTO> findDoctorsOnSpecialty(String specialty) {
         try {
             //https://hkyhsgzdbc0teha-smashvoiddb.adb.ap-mumbai-1.oraclecloudapps.com/ords/shams/city/doctors/:speciality
@@ -205,6 +206,43 @@ public class CityRestService    {
         try {
 
             responseDTO = restTemplate.getForObject(url, NewsDTO.class,c);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return responseDTO;
+    }
+
+    public TouristAttractionDTO findAttractionOnShortUrl(String param, String c) {
+        try {
+            String ordsRestUrl="sz_blog_posts/";
+            String criterion = null;
+            if(c!=null) {
+                criterion = "{\"custom_url\":\"" + c + "\",\"$orderby\":{\"title\":\"asc\"}}";
+            }
+
+            return getTouristAttractionResponse(ordsRestUrl,param,criterion);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private TouristAttractionDTO getTouristAttractionResponse(String restUrl, String param, String c){
+        RestTemplate restTemplate = new RestTemplate();
+        String url = RestUrlConstants.ORDS_PREFIX+restUrl ;
+        if(ValConditions.isNotEmpty(param)){
+            url=url+param;
+        }
+        if(ValConditions.isNotEmpty(c)){
+            url=url+"?q={criterion}";
+        }
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Type", "application/json");
+
+        TouristAttractionDTO responseDTO = null;
+        try {
+
+            responseDTO = restTemplate.getForObject(url, TouristAttractionDTO.class,c);
         } catch (Exception e) {
             e.printStackTrace();
         }

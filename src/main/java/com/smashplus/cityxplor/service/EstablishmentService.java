@@ -127,7 +127,7 @@ public class EstablishmentService {
         try {
             List<EstablishmentDTO> establishmentEntities =null;
             if(ValConditions.isNotEmpty(type) && !type.equalsIgnoreCase("all")) {
-                establishmentEntities = cityRestService.findEstablishmentsFileter(cityId, type, value, sortOrder);
+                establishmentEntities = cityRestService.findEstablishmentsFilter(cityId, type, value, sortOrder);
             }else{
                 establishmentEntities = cityRestService.findEstablishments( cityId, "all");
             }

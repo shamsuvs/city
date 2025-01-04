@@ -46,7 +46,7 @@ public class CommonUtil {
     }
     public Map<String, EstablishmentCategoryDTO> getCategoryDTOMap(){
         Map<String,EstablishmentCategoryDTO> establishmentCategoryDTOMap = new HashMap<>();
-        EstablishmentCategoryDTO establishmentCategoryDTO=new EstablishmentCategoryDTO("Hospitals","https://res.cloudinary.com/dw8him6rb/image/upload/v1665039690/city-explorer/hospital.jpg","Best Hospitals","/hospital-in--sulthan-bathery","hospital");
+        EstablishmentCategoryDTO establishmentCategoryDTO=new EstablishmentCategoryDTO("Hospitals","https://res.cloudinary.com/dw8him6rb/image/upload/v1665039690/city-explorer/hospital.jpg","Best Hospitals","/hospital--sb","hospital");
         establishmentCategoryDTOMap.put("hospital",establishmentCategoryDTO);
         establishmentCategoryDTO=new EstablishmentCategoryDTO("Hotels","https://res.cloudinary.com/dw8him6rb/image/upload/v1663933000/cld-sample-4.jpg","Best Hotels","/hotels--sb","hotel");
         establishmentCategoryDTOMap.put("hotel",establishmentCategoryDTO);
