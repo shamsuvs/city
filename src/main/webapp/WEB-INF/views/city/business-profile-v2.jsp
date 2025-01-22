@@ -90,16 +90,51 @@
           </div>
         </div>
         <p class="text-muted mb-1"> <i class="fa fa-map-marker text-primary mr-1"></i>${entity.address}, ${entity.district},${entity.state}, ${entity.country}</p>
+
+
+
         <ul class="list-unstyled mb-0">
-          <c:if test="${not empty entity.phone}">
-            <li class="pb-1 mb-2"><span class="d-block fs-sm text-muted mb-1">Contact numbers</span><a class="nav-link fs-lg p-0" href="tel:${entity.phone}">${entity.phone}</a> <a class="nav-link fs-lg p-0" href="tel:${entity.mobile}">${entity.mobile}</a></li>
-          </c:if>
-          <c:if test="${not empty entity.website}">
-            <li class="pb-1 mb-2"><span class="d-block fs-sm text-muted mb-1">website</span>
-            <a class="nav-link fs-lg p-0" href="${entity.website}">${entity.website}</a>
+          <!-- Contact Information -->
+          <c:if test="${not empty entity.phone or not empty entity.mobile}">
+            <li class="pb-1 mb-2">
+              <span class="d-block fs-sm text-muted mb-1">Contact Numbers</span>
+              <c:if test="${not empty entity.phone}">
+                <a class="nav-link fs-lg p-0 d-inline-block" href="tel:${fn:escapeXml(entity.phone)}"
+                   aria-label="Call phone number ${entity.phone}">
+                    ${fn:escapeXml(entity.phone)}
+                </a>
+              </c:if>
+              <c:if test="${not empty entity.mobile}">
+                <span class="mx-2">|</span> <!-- Separator -->
+                <a class="nav-link fs-lg p-0 d-inline-block" href="tel:${fn:escapeXml(entity.mobile)}"
+                   aria-label="Call mobile number ${entity.mobile}">
+                    ${fn:escapeXml(entity.mobile)}
+                </a>
+              </c:if>
+            </li>
           </c:if>
 
+          <!-- Website Information -->
+          <c:if test="${not empty entity.website}">
+            <li class="pb-1 mb-2">
+              <span class="d-block fs-sm text-muted mb-1">Website</span>
+              <a class="nav-link fs-lg p-0" href="${fn:escapeXml(entity.website)}" target="_blank"
+                 rel="noopener noreferrer" aria-label="Visit website ${entity.website}">
+                  ${fn:escapeXml(entity.website)}
+              </a>
+            </li>
+          </c:if>
+
+          <!-- Fallback Message -->
+          <c:if test="${empty entity.phone and empty entity.mobile and empty entity.website}">
+            <li class="pb-1 mb-2">
+              <span class="text-muted">No contact information available.</span>
+            </li>
+          </c:if>
         </ul>
+
+
+
 
         <c:if test="${not empty entity.image1}">
           <figure class="figure"><img class="figure-img rounded-5 mb-3" src="${entity.image1}" alt="${entity.title}">
@@ -169,8 +204,9 @@
                                                                                                                                                                                                                            data-jarallax-original-styles="background-image: url(assets/img/landing/coworking-space/parallax-image.jpg);"></div></div></div>
           </div>
         </section>
+          <!--DOCTORS-->
         </c:if>
-        <c:if test="${entity.category eq 'hospital'}">
+        <c:if test="${entity.category eq 'healthcare'}">
           <h1 class="pb-3 pb-lg-4">Doctors of ${entity.title}</h1>
           <!-- Post-->
           <c:forEach var="doctor" items="${entity.doctors}">
@@ -182,9 +218,7 @@
                   <div class="card-body">
                     <h4 class="card-title"> ${doctor.name} </h4>
                     <div class="d-flex align-items-center me-3 fs-lg text-uppercase"><i class="ai-clipboard me-1"></i>${doctor.qualification}</div>
-
                     <h2 class="fs-base fw-normal text-muted mb-2 mb-sm-3 text-capitalize">Speciality : <a href="/${doctor.specialityShortCode}-doctors--sultan-bathery"> ${doctor.specialityShortCode}</a></h2>
-
                   </div>
                 </div>
               </div>
