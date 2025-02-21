@@ -53,7 +53,7 @@ public class TouristAttractionService {
             String ordsRestUrl="tourist_attractions/";
 
             // Build query criterion for API
-            criterion = "{\"site\":\""+cityId+"\",\"$orderby\":{\""+sortField+"\":\""+sortOrder+"\"}}";
+            criterion = "{\"city\":\""+cityId+"\",\"$orderby\":{\""+sortField+"\":\""+sortOrder+"\"}}";
 
             ObjectMapper mapper = new ObjectMapper();
             mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

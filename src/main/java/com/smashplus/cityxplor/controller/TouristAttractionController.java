@@ -46,7 +46,7 @@ public class TouristAttractionController {
     }
 
     // 2. Fetch all tourist attractions for a city
-    @RequestMapping(value = "/all-attractions", method = {RequestMethod.GET})
+    @RequestMapping(value = "/tourist-attractions", method = {RequestMethod.GET})
     public String fetchAllAttractions(Model model, HttpServletRequest req) {
         try {
             // Fetch category map
@@ -55,7 +55,7 @@ public class TouristAttractionController {
 
             // Fetch list of attractions
             List<TouristAttractionDTO> attractions = touristAttractionService.fetchTouristAttractions(
-                    "sultan-bathery", "name", "asc"
+                    "Sultan-Bathery", "name", "asc"
             );
             model.addAttribute("attractionsList", attractions);
             model.addAttribute("target", "All Tourist Attractions - Sultan Bathery");

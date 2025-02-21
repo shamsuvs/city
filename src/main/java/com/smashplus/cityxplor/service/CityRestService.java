@@ -214,7 +214,7 @@ public class CityRestService    {
 
     public TouristAttractionDTO findAttractionOnShortUrl(String param, String c) {
         try {
-            String ordsRestUrl="sz_blog_posts/";
+            String ordsRestUrl="tourist-attractions/";
             String criterion = null;
             if(c!=null) {
                 criterion = "{\"custom_url\":\"" + c + "\",\"$orderby\":{\"title\":\"asc\"}}";

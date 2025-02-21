@@ -5,334 +5,183 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class TouristAttractionDTO {
 
     @JsonProperty("id")
-    int id;
+    private String id;
 
     @JsonProperty("name")
-    String  name;
+    private String name;
 
     @JsonProperty("teaser")
-    String teaser;
+    private String teaser;
 
     @JsonProperty("description")
-    String description;
+    private String description;
 
     @JsonProperty("address")
-    String address;
+    private String address;
 
     @JsonProperty("city")
-    String city;
+    private String city;
 
     @JsonProperty("state")
-    String state;
+    private String state;
 
     @JsonProperty("country")
-    String country;
-
-    //@JsonProperty("location_map")
-    //;
+    private String country;
 
     @JsonProperty("category")
-    String category;
+    private String category;
 
     @JsonProperty("features")
-    String features;
+    private String features;
 
     @JsonProperty("tags")
-    String tags;
+    private String tags;
 
     @JsonProperty("entry_fee")
-    String entryFee;
+    private String entryFee;
 
     @JsonProperty("opening_hours")
-    String openingHours;
+    private String openingHours;
 
     @JsonProperty("closing_day")
-    String closingDay;
+    private String closingDay;
 
     @JsonProperty("best_time_to_visit")
-    String bestTimeToVisit;
+    private String bestTimeToVisit;
 
     @JsonProperty("image1")
-    String image1;
+    private String image1;
 
     @JsonProperty("image2")
-    String image2;
+    private String image2;
 
     @JsonProperty("image3")
-    String image3;
+    private String image3;
 
     @JsonProperty("youtube_url")
-    String youtubeUrl;
+    private String youtubeUrl;
 
     @JsonProperty("contact_number")
-    String contactNumber;
+    private String contactNumber;
 
     @JsonProperty("website_url")
-    String websiteUrl;
+    private String websiteUrl;
 
     @JsonProperty("useo_url")
-    String useoUrl;
+    private String useoUrl;
 
     @JsonProperty("average_rating")
-    String averageRating;
+    private String averageRating;
 
     @JsonProperty("visitor_count")
-    String visitorCount;
+    private String visitorCount;
 
     @JsonProperty("note")
-    String note;
+    private String note;
 
     @JsonProperty("created_dated")
-    String createdDate;
+    private String createdDate;
 
     @JsonProperty("create_by")
-    String createdBy;
+    private String createdBy;
 
     @JsonProperty("author")
-    String author;
+    private String author;
 
     @JsonProperty("modified_date")
-    String modifiedDate;
+    private String modifiedDate;
 
     @JsonProperty("status")
-    String status;
+    private String status;
 
-    public int getId(){
+    // Getters and Setters
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
 
-        return id;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public void setId(){
+    public String getTeaser() { return teaser; }
+    public void setTeaser(String teaser) { this.teaser = teaser; }
 
-        this.id = id;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
-    public String getName(){
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
 
-        return name;
-    }
+    public String getCity() { return city; }
+    public void setCity(String city) { this.city = city; }
 
-    public void setName(){
+    public String getState() { return state; }
+    public void setState(String state) { this.state = state; }
 
-        this.name = name;
-    }
+    public String getCountry() { return country; }
+    public void setCountry(String country) { this.country = country; }
 
-    public String getTeaser(){
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
 
-        return teaser;
-    }
+    public String getFeatures() { return features; }
+    public void setFeatures(String features) { this.features = features; }
 
-    public void setTeaser(){
+    public String getTags() { return tags; }
+    public void setTags(String tags) { this.tags = tags; }
 
-        this.teaser = teaser;
-    }
+    public String getEntryFee() { return entryFee; }
+    public void setEntryFee(String entryFee) { this.entryFee = entryFee; }
 
-    public String getDescription(){
+    public String getOpeningHours() { return openingHours; }
+    public void setOpeningHours(String openingHours) { this.openingHours = openingHours; }
 
-        return description;
-    }
+    public String getClosingDay() { return closingDay; }
+    public void setClosingDay(String closingDay) { this.closingDay = closingDay; }
 
-    public void setDescription(){
-        this.description = description;
-    }
+    public String getBestTimeToVisit() { return bestTimeToVisit; }
+    public void setBestTimeToVisit(String bestTimeToVisit) { this.bestTimeToVisit = bestTimeToVisit; }
 
-    public String getAddress(){
-        return address;
-    }
+    public String getImage1() { return image1; }
+    public void setImage1(String image1) { this.image1 = image1; }
 
-    public void setAddress(){
-        this.address = address;
-    }
+    public String getImage2() { return image2; }
+    public void setImage2(String image2) { this.image2 = image2; }
 
-    public String getCity(){
-        return city;
-    }
+    public String getImage3() { return image3; }
+    public void setImage3(String image3) { this.image3 = image3; }
 
-    public void setCity(){
-        this.city = city;
-    }
+    public String getYoutubeUrl() { return youtubeUrl; }
+    public void setYoutubeUrl(String youtubeUrl) { this.youtubeUrl = youtubeUrl; }
 
-    public String getState(){
-        return state;
-    }
+    public String getContactNumber() { return contactNumber; }
+    public void setContactNumber(String contactNumber) { this.contactNumber = contactNumber; }
 
-    public void setState(){
-        this.state = state;
-    }
+    public String getWebsiteUrl() { return websiteUrl; }
+    public void setWebsiteUrl(String websiteUrl) { this.websiteUrl = websiteUrl; }
 
-    public String getCountry(){
-        return country;
-    }
+    public String getUseoUrl() { return useoUrl; }
+    public void setUseoUrl(String useoUrl) { this.useoUrl = useoUrl; }
 
-    public void setCountry(){
-        this.country = country;
-    }
+    public String getAverageRating() { return averageRating; }
+    public void setAverageRating(String averageRating) { this.averageRating = averageRating; }
 
-    public String getCategory(){
-        return category;
-    }
+    public String getVisitorCount() { return visitorCount; }
+    public void setVisitorCount(String visitorCount) { this.visitorCount = visitorCount; }
 
-    public void setCategory(){
-        this.category = category;
-    }
+    public String getNote() { return note; }
+    public void setNote(String note) { this.note = note; }
 
-    public String getFeatures(){
-        return features;
-    }
+    public String getCreatedDate() { return createdDate; }
+    public void setCreatedDate(String createdDate) { this.createdDate = createdDate; }
 
-    public void setFeatures(){
-        this.features = features;
-    }
+    public String getCreatedBy() { return createdBy; }
+    public void setCreatedBy(String createdBy) { this.createdBy = createdBy; }
 
-    public String getTags(){
-        return tags;
-    }
+    public String getAuthor() { return author; }
+    public void setAuthor(String author) { this.author = author; }
 
-    public void setTags(){
-        this.tags = tags;
-    }
+    public String getModifiedDate() { return modifiedDate; }
+    public void setModifiedDate(String modifiedDate) { this.modifiedDate = modifiedDate; }
 
-    public String getEntryFee(){
-        return entryFee;
-    }
-
-    public void setEntryFee(){
-        this.entryFee = entryFee;
-    }
-
-    public String getOpeningHours(){
-        return openingHours;
-    }
-
-    public void setOpeningHours(){
-        this.openingHours = openingHours;
-    }
-
-    public String getClosingDay(){
-        return closingDay;
-    }
-
-    public void setClosingDay(){
-        this.closingDay = closingDay;
-    }
-
-    public String getBestTimeToVisit(){
-        return bestTimeToVisit;
-    }
-
-    public void setBestTimeToVisit(){
-        this.bestTimeToVisit = bestTimeToVisit;
-    }
-
-    public String getImage1(){
-        return image1;
-    }
-
-    public void setImage1(){
-        this.image1 = image1;
-    }
-
-    public String getImage2(){
-        return image2;
-    }
-
-    public void setImage2(){
-        this.image2 = image2;
-    }
-
-    public String getImage3(){
-        return image3;
-    }
-
-    public void setImage3(){
-        this.image3 = image3;
-    }
-
-    public String getYoutubeUrl(){
-        return youtubeUrl;
-    }
-
-    public void setYoutubeUrl(){
-        this.youtubeUrl = youtubeUrl;
-    }
-
-    public String getContactNumber(){
-        return contactNumber;
-    }
-
-    public void setContactNumber(){
-        this.contactNumber = contactNumber;
-    }
-
-    public String getWebsiteUrl(){
-        return websiteUrl;
-    }
-
-    public void setWebsiteUrl(){
-        this.websiteUrl = websiteUrl;
-    }
-
-    public String getUseoUrl(){
-        return useoUrl;
-    }
-
-    public void setUseoUrl(){
-        this.useoUrl = useoUrl;
-    }
-
-    public String getAverageRating(){
-        return averageRating;
-    }
-
-    public void setAverageRating(){
-        this.averageRating = averageRating;
-    }
-
-    public String getVisitorCount(){
-        return visitorCount;
-    }
-
-    public void setVisitorCount(){
-        this.visitorCount = visitorCount;
-    }
-
-    public String getNote(){
-        return note;
-    }
-
-    public void setNote(){
-        this.note = note;
-    }
-
-    public String getCreatedDate(){
-        return createdDate;
-    }
-
-    public void setCreatedDate(){
-        this.createdDate = createdDate;
-    }
-
-    public String getCreatedBy(){
-        return createdBy;
-    }
-
-    public void setCreatedBy(){
-        this.createdBy = createdBy;
-    }
-
-    public String getAuthor(){
-        return author;
-    }
-
-    public void setAuthor(){
-        this.author = author;
-    }
-
-    public String getModifiedDate(){
-        return modifiedDate;
-    }
-
-    public void setModifiedDate(){
-        this.modifiedDate = modifiedDate;
-    }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 }

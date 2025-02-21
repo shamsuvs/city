@@ -2,14 +2,23 @@ package com.smashplus.cityxplor.dto;
 
 import java.util.List;
 
-public class GenericResponse {
-    public List items;
+public class GenericResponse<T> {
+    private List<T> items;
+    private T item; // Field for a single item
 
-    public List getItems() {
+    public List<T> getItems() {
         return items;
     }
 
-    public void setItems(List items) {
+    public void setItems(List<T> items) {
         this.items = items;
+    }
+
+    public T getItem() {
+        return item;
+    }
+
+    public void setItem(T item) {
+        this.item = item;
     }
 }
